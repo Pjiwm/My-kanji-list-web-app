@@ -1,5 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
+const isDocker = require('is-docker')();
 
 module.exports = function (config) {
   config.set({
@@ -37,8 +38,15 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
-    restartOnFileChange: true
+    browsers: ['Chrome_no_sandbox'],
+    singleRun: true,
+    restartOnFileChange: true,
+    // we add a custom launch for chrome so it can run in docker container.
+    customLaunchers: {
+      Chrome_no_sandbox: {
+        base: 'ChromeHeadless',
+        flags: isDocker ? ['--no-sandbox'] : []
+      }
+    }
   });
 };

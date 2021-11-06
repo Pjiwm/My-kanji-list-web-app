@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
         {
             "name": "Ng serve",
             "command": "ng serve --host 0.0.0.0",
