@@ -38,12 +38,12 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome_no_sandbox'],
+    browsers: ['ChromeNoSandbox'],
     singleRun: true,
     restartOnFileChange: true,
     // we add a custom launch for chrome so it can run in docker container.
     customLaunchers: {
-      Chrome_no_sandbox: {
+      ChromeNoSandbox: {
         base: 'ChromeHeadless',
         flags: isDocker ? ['--no-sandbox'] : []
       }
