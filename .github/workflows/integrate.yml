@@ -1,4 +1,4 @@
-name: Node CI
+name: Node CI/CD
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test_pull_request:
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,3 +16,18 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+  firebase-deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+        with:
+          node-version: "17.x"
+      - uses: npm ci
+      - uses: npm run build
+      - uses: w9jds/firebase-action@main
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{FIREBASE_API_KEY}}
