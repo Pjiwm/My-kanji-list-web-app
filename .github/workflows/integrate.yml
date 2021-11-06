@@ -26,7 +26,7 @@ jobs:
           node-version: "17.x"
       - run: npm ci
       - run: npm run build
-      - uses: w9jds/firebase-action@v2
+      - uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:
