@@ -1,3 +1,11 @@
+<div align="center">
+  <img src="https://img.shields.io/github/languages/code-size/Pjiwm/angular-sandbox" />
+  <img src="https://img.shields.io/github/workflow/status/Pjiwm/angular-sandbox/ci-cd" />
+  <img src="https://img.shields.io/github/commit-activity/m/pjiwm/angular-sandbox" />
+  <img src="https://img.shields.io/github/last-commit/pjiwm/angular-sandbox" />
+</div>
+<hr/>
+
 # AngularSandbox
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
