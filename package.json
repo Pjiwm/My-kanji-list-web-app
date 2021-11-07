@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --coverage --no-watch --no-progress --browsers=ChromeNoSandbox",
+    "test": "ng test --code-coverage --no-watch --no-progress --browsers=ChromeNoSandbox",
     "sonar": "sonar-scanner"
   },
   "private": true,
