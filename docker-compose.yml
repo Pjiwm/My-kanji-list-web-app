@@ -6,3 +6,8 @@ services:
       - .:/usr/src/app
     ports: 
       - 4200:4200
+    env_file:
+      - .env
+    environment:
+      SONAR_LOGIN_KEY: ${SONAR_LOGIN_KEY}
+      SONAR_PROJECT_KEY: ${SONAR_PROJECT_KEY}
