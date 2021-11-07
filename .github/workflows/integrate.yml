@@ -24,6 +24,7 @@ jobs:
           node-version: '17.x'
       - run: npm ci
       - run: node_modules/protractor/bin/webdriver-manager update
+      - run: npm run start
       - run: npm run e2e
   firebase-deploy:
     runs-on: ubuntu-latest
