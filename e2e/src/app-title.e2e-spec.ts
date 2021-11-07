@@ -5,7 +5,7 @@ describe('Angular App', function() {
   it('check title', async () => {
     browser.get(browser.baseUrl);
 
-    let  expected = "AngularSandbox";
+    let  expected = "AngularSandbox FAIL";
     let actual = await browser.getTitle();
 
     expect(actual).toEqual(expected);
