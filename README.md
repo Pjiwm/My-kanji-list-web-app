@@ -65,6 +65,7 @@ If you just wanna use the workflow make sure the karma `karma.conf.js` has the s
 
 Run `ng e2e` to execute the end-to-end tests.
 We use protractor in this case. The default browser that's being used is google-chrome, if e2e testing does not work check the `protractor.conf.js` file in `/e2e/src`
+If you just wanna use the workflow and haven't set-up e2e yet you can use: [How to use Protractor with Angular 12](https://danielk.tech/home/angular-12-and-protractor)
 
 ## deployment
 For deploying to firebase you can use this tutorial: [AUTOMATE your code deploys: Firebase Hosting & Github Actions](https://www.youtube.com/watch?v=PUuyqbVtQTQ)
