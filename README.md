@@ -59,11 +59,18 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 ## Running unit tests
 
 Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+If you just wanna use the workflow make sure the karma `karma.conf.js` has the same values, otherwise chrome cannot be opened, or the test will run infinitely.
 
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests.
 We use protractor in this case. The default browser that's being used is google-chrome, if e2e testing does not work check the `protractor.conf.js` file in `/e2e/src`
+
+## deployment
+For deploying to firebase you can use this tutorial: [AUTOMATE your code deploys: Firebase Hosting & Github Actions](https://www.youtube.com/watch?v=PUuyqbVtQTQ)
+
+Make sure that firebase directs to `dist/your-app-name` in `firebase.json` which is in our case `dist/angular-sandbox`
+
 
 ## Further help
 
