@@ -12,7 +12,6 @@ RUN npm install firebase
 RUN npm install -g firebase-tools
 
 #protractor
-RUN npm install -D jasmine-spec-reporter ts-node protractor
 RUN node_modules/protractor/bin/webdriver-manager update
 
 # chrome
