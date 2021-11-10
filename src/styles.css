@@ -13,7 +13,7 @@ h1 {
     background: #2f2f2f;
   }
   body, input[type="text"], button {
-    color: #333;
+    color: rgb(255, 255, 255);
     font-family: Cambria, Georgia, serif;
   }
   /* everywhere else */
