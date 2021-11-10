@@ -8,4 +8,54 @@
 
 .background {
     background-image: url('./footer-peaks.svg');
+    z-index: -1;
 }
+
+.twitter {
+    background-color: white;
+    -webkit-mask-image: url(twitter.svg);
+    mask-image: url(twitter.svg);
+}
+
+.twitter:hover {
+    transition: background-color 0.28s ease-in;
+    cursor:pointer;
+    background-color: #8a0000;
+    -webkit-mask-image: url(twitter.svg);
+    mask-image: url(twitter.svg);
+}
+
+.youtube {
+    background-color: white;
+    -webkit-mask-image: url(youtube.svg);
+    mask-image: url(youtube.svg);
+}
+
+.youtube:hover {
+    transition: background-color 0.28s ease-in;
+    cursor:pointer;
+    background-color: #8a0000;
+    -webkit-mask-image: url(youtube.svg);
+    mask-image: url(youtube.svg);
+}
+
+.github {
+    background-color: white;
+    -webkit-mask-image: url(github.svg);
+    mask-image: url(github.svg);
+}
+
+.github:hover {
+    transition: background-color 0.28s ease-in;
+    cursor:pointer;
+    background-color: #8a0000;
+    -webkit-mask-image: url(github.svg);
+    mask-image: url(github.svg);
+}
+
+a {
+    height: 56px;
+    width: 56px;
+    display: inline-block;
+    margin: 10px;
+  }
