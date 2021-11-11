@@ -2,6 +2,9 @@
     background-color: white;
     -webkit-mask-image: url(twitter.svg);
     mask-image: url(twitter.svg);
+    max-width: 40px;
+    max-height: 40px;
+    
 }
 
 .twitter:hover {
@@ -16,6 +19,8 @@
     background-color: white;
     -webkit-mask-image: url(youtube.svg);
     mask-image: url(youtube.svg);
+    max-width: 40px;
+    max-height: 40px;
 }
 
 .youtube:hover {
@@ -30,6 +35,8 @@
     background-color: white;
     -webkit-mask-image: url(github.svg);
     mask-image: url(github.svg);
+    max-width: 50px;
+    max-height: 50px;
 }
 
 .github:hover {
@@ -46,3 +53,5 @@ a {
     display: inline-block;
     margin: 10px;
   }
+
+

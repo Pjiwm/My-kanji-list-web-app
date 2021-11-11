@@ -18,9 +18,9 @@ import { BackgroundComponent } from './background/background.component';
   declarations: [
     AppComponent,
     HeroesComponent,
+    HomeComponent,
     FooterComponent,
     NavbarComponent,
-    HomeComponent,
     BackgroundComponent
   ],
   imports: [
