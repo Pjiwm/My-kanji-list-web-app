@@ -14,7 +14,6 @@ h1 {
   }
   body, input[type="text"], button {
     color: rgb(255, 255, 255);
-    font-family: Cambria, Georgia, serif;
   }
   /* everywhere else */
   * {
@@ -23,8 +22,40 @@ h1 {
 
   .transparent-field {
     background-color: rgb(0, 0, 0, .2);
-    border-radius: 2%;
-    padding: 5px;
     border-color: #2f2f2f;
     box-shadow: 0px 1px 10px 0px rgba(0,0,0,.7);
   }
+
+  .nav-link {
+    color: white !important;
+    font-size: 1.6em;
+    font-family: 'Arial Bold', sans-serif;
+    text-decoration: underline;
+  }
+
+  .nav-link:hover {
+    color: #8a0000 !important;
+    font-size: 1.6em;
+    font-family: 'Arial Bold', sans-serif;
+    text-decoration: underline;
+    transition: color 0.2s ease-in;
+    cursor:pointer;
+  }
+  
+  .btn-primary {
+    background-color: #8a0000 !important;
+    border-color: #8a0000 !important;
+  }
+
+  .btn-primary:hover {
+    background-color: #6b0202 !important;
+    border-color: #6b0202 !important;
+  }
+
+  .center-object {
+    padding-top: 150px;
+  }
+
+
+
+  

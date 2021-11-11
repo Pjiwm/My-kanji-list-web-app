@@ -8,4 +8,5 @@
 
 .background {
     background-image: url('./header-waves.svg');
+    z-index: -1;
 }
