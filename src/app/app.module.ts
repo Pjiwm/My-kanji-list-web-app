@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BackgroundComponent } from './background/background.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BackgroundComponent } from './background/background.component';
     HomeComponent,
     FooterComponent,
     NavbarComponent,
-    BackgroundComponent
+    BackgroundComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
