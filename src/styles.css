@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
 /* Application-wide Styles */
 h1 {
     color: rgb(255, 255, 255);
@@ -20,11 +21,14 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
   }
 
+.header-font {
+  font-family: 'RocknRoll One', sans-serif;
+}
+
   .transparent-field {
     background-color: rgb(0, 0, 0, .2);
     border-color: #2f2f2f;
     box-shadow: 0px 1px 10px 0px rgba(0,0,0,.7);
-    
   }
 
   .nav-link {
@@ -53,15 +57,22 @@ h1 {
     border-color: #6b0202 !important;
   }
 
-  .page-footer{
-    position:fixed;
-    bottom:0px;
-    width:100%;
-    }
-
-  .page-center {
-    bottom: 1000px;
-  }
+.super-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.5em;
+  background-color: rgb(138, 0, 0);
+  border-color: rgb(138, 0, 0);
+  box-shadow: 0px 1px 10px 0px rgba(0,0,0,.7);
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+.super-button:hover {
+  transition: background-color 0.28s ease-in;
+  background-color: #6b0202;
+  color: white;
+  text-decoration: none;
+}
 
 
 
