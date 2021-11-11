@@ -1,22 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&family=Yuji+Mai&display=swap');
 /* Application-wide Styles */
 h1 {
-    color: #369;
+    color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 250%;
   }
   h2, h3 {
-    color: #444;
+    color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
   }
   body {
-    margin: 2em;
+    background: #2f2f2f;
   }
   body, input[type="text"], button {
-    color: #333;
-    font-family: Cambria, Georgia, serif;
+    color: rgb(255, 255, 255);
   }
   /* everywhere else */
   * {
     font-family: Arial, Helvetica, sans-serif;
   }
+
+.header-font {
+  font-family: 'RocknRoll One', sans-serif;
+}
+
+  .transparent-field {
+    background-color: rgb(0, 0, 0, .2);
+    border-color: #2f2f2f;
+    box-shadow: 0px 1px 10px 0px rgba(0,0,0,.7);
+  }
+
+  .nav-link {
+    color: white !important;
+    font-size: 1.6em;
+    font-family: 'Arial Bold', sans-serif;
+    text-decoration: underline;
+  }
+
+  .nav-link:hover {
+    color: #8a0000 !important;
+    font-size: 1.6em;
+    font-family: 'Arial Bold', sans-serif;
+    text-decoration: underline;
+    transition: color 0.2s ease-in;
+    cursor:pointer;
+  }
+
+  
+  .btn, .btn-primary {
+    background-color: #8a0000 !important;
+    border-color: #8a0000 !important;
+  }
+
+  .btn:hover, .btn-primary:hover {
+    background-color: #6b0202 !important;
+    border-color: #6b0202 !important;
+  }
+
+.super-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.5em;
+  background-color: rgb(138, 0, 0);
+  border-color: rgb(138, 0, 0);
+  box-shadow: 0px 1px 10px 0px rgba(0,0,0,.7);
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+.super-button:hover {
+  transition: background-color 0.28s ease-in;
+  background-color: #6b0202;
+  color: white;
+  text-decoration: none;
+}
+
+.japanese-cursive {
+  font-family: 'Yuji Mai', serif;
+}
+
+.giant-header {
+  font-size: 5em;
+}
