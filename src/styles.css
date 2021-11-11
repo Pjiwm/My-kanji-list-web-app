@@ -46,17 +46,18 @@ h1 {
     transition: color 0.2s ease-in;
     cursor:pointer;
   }
+
   
-  .btn-primary {
+  .btn, .btn-primary {
     background-color: #8a0000 !important;
     border-color: #8a0000 !important;
   }
 
-  .btn-primary:hover {
+  .btn:hover, .btn-primary:hover {
     background-color: #6b0202 !important;
     border-color: #6b0202 !important;
   }
-
+  
 .super-button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2.5em;
