@@ -1,0 +1,16 @@
+.spacer {
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.background-top {
+    background-image: url('./header-waves.svg');
+}
+
+.background-bottom {
+    background-image: url('./footer-peaks.svg');
+}
