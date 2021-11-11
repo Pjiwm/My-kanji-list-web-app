@@ -57,7 +57,7 @@ h1 {
     background-color: #6b0202 !important;
     border-color: #6b0202 !important;
   }
-  
+
 .super-button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2.5em;
@@ -77,4 +77,8 @@ h1 {
 
 .japanese-cursive {
   font-family: 'Yuji Mai', serif;
+}
+
+.giant-header {
+  font-size: 5em;
 }
