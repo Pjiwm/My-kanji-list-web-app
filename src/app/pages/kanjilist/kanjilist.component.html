@@ -1,7 +1,8 @@
 <div class="container transparent-field text-center">
     <h1 class="header-font pt-3">Kanji Lists</h1>
     <div class="container-fluid">
-        <table class="table table-dark my-5 mb-5">
+        <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" routerLink='./new'>New list</a>
+        <table class="table table-dark mb-5">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -16,9 +17,9 @@
                     <td>{{kanjiList.name}}</td>
                     <td>{{kanjiList.description}}</td>
                     <td><span *ngFor="let kanji of kanjiList.kanji; let i = index">
-                        <span *ngIf="i < 5">{{kanji + " "}}</span>
-                        <span *ngIf="i == kanjiList.kanji.length -1 && kanjiList.kanji.length > 5">...</span>
-                    </span></td>
+                            <span *ngIf="i < 5">{{kanji + " "}}</span>
+                            <span *ngIf="i == kanjiList.kanji.length -1 && kanjiList.kanji.length > 5">...</span>
+                        </span></td>
                     <td><span *ngFor="let tag of kanjiList.tags; let i=index">
                             <span *ngIf="i < kanjiList.tags.length-1">{{tag + ", "}}</span>
                             <span *ngIf="i == kanjiList.tags.length-1">{{tag}}</span>
