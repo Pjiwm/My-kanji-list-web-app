@@ -14,7 +14,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { BackgroundComponent } from './background/background.component';
 import { AboutComponent } from './pages/about/about.component';
 import { KanjilistComponent } from './pages/kanjilist/kanjilist.component';
-import { KanjilistDetailComponent } from './pages/kanjilist-detail/kanjilist-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { KanjilistDetailComponent } from './pages/kanjilist-detail/kanjilist-det
     BackgroundComponent,
     AboutComponent,
     KanjilistComponent,
-    KanjilistDetailComponent
   ],
   imports: [
     BrowserModule,
