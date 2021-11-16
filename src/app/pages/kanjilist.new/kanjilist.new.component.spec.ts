@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KanjilistDetailComponent } from './kanjilist-detail.component';
+import { KanjilistNewComponent } from './kanjilist.new.component';
 
-describe('KanjilistDetailComponent', () => {
-  let component: KanjilistDetailComponent;
-  let fixture: ComponentFixture<KanjilistDetailComponent>;
+describe('Kanjilist.NewComponent', () => {
+  let component: KanjilistNewComponent;
+  let fixture: ComponentFixture<KanjilistNewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KanjilistDetailComponent ]
+      declarations: [ KanjilistNewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KanjilistDetailComponent);
+    fixture = TestBed.createComponent(KanjilistNewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
