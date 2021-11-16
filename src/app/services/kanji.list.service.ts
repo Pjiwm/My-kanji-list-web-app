@@ -47,6 +47,17 @@ export class KanjiListService {
         kanji: ['子', '愛', '明', '華', '女'],
         tags: ['girl', 'jinmeiyō', 'jinmeiyou', '人名用漢字'],
         creationDate: new Date("2012-10-03")
+      },
+      {
+        id: 6,
+        name: 'XL list',
+        description: 'A big list with the same character for demonstration purposes',
+        kanji: ['重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',
+          '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',
+          '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',
+          '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',],
+        tags: ['girl', 'jinmeiyō', 'jinmeiyou', '人名用漢字'],
+        creationDate: new Date("2012-10-03")
       }
     ]
   }
@@ -60,7 +71,7 @@ export class KanjiListService {
   }
 
   getForId(id: number) {
-    return this.kanjiLists[id-1]
+    return this.kanjiLists[id - 1]
   }
 
   getOption() {

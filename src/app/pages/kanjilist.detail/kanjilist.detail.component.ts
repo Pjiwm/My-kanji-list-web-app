@@ -28,5 +28,4 @@ export class KanjilistDetailComponent implements OnInit {
       this.kanjiList = this.kanjiListService.getForId(this.id)
     }
   }
-
 }
