@@ -60,7 +60,7 @@ export class KanjiListService {
   }
 
   getForId(id: number) {
-    return this.kanjiLists.find((x) => x.id = id)
+    return this.kanjiLists[id-1]
   }
 
   getOption() {
