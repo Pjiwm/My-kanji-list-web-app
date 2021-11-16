@@ -9,19 +9,24 @@
                     <th scope="col">Description</th>
                     <th scope="col">Kanji</th>
                     <th scope="col">Tags</th>
-                    <th scope="col">Creation date</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
                 </tr>
             <tbody>
                 <tr *ngFor="let kanjiList of kanjiLists">
                     <th scope="row">{{kanjiList.id}}</th>
                     <td>{{kanjiList.name}}</td>
                     <td>{{kanjiList.description}}</td>
-                    <td><span *ngFor="let kanji of kanjiList.kanji">{{kanji + " "}}</span></td>
+                    <td><span *ngFor="let kanji of kanjiList.kanji; let i = index">
+                        <span *ngIf="i < 5">{{kanji + " "}}</span>
+                        <span *ngIf="i == kanjiList.kanji.length -1">...</span>
+                    </span></td>
                     <td><span *ngFor="let tag of kanjiList.tags; let i=index">
                             <span *ngIf="i < kanjiList.tags.length-1">{{tag + ", "}}</span>
                             <span>{{tag}}</span>
                         </span></td>
                     <td>{{kanjiList.creationDate | date}}</td>
+                    <td><a class="btn btn-primary" routerLink="kanjilist/">more</a></td>
                     <td></td>
                 </tr>
             </tbody>
