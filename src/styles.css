@@ -83,3 +83,13 @@ h1 {
   background-color: #353a40;
   border-radius: 5px;
 }
+
+textarea{ 
+  background-color:#353a40 !important;
+  color: white !important;
+}
+
+input[type="text"]{
+  background-color:#353a40 !important;
+  color: white !important;
+  }
