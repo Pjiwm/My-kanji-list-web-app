@@ -101,3 +101,8 @@ a {
 a:hover {
   color: #9c0101;
 }
+
+.validation-error {
+  color: #e00000;
+  size: 0.5em;
+}
