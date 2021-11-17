@@ -62,6 +62,8 @@ export class KanjiListService {
     ]
   }
 
+
+
   setOption(id: number, value: any) {
     this.kanjiLists[id] = value
   }

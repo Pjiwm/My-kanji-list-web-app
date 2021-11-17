@@ -1,25 +1,48 @@
 <div class="container transparent-field text-center">
     <div class="container-fluid">
-        <form>
+
+        <form #kanjiListForm="ngForm" name="form" (ngSubmit)="kanjiListForm.form.valid && onSubmit()" novalidate>
 
             <label class="header-font float-left mt-4">Name:</label>
             <!-- form name -->
-            <input name="name" type="text" class="form-control mt-1" placeholder="write a name..."
-                aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <input [(ngModel)]="listName" name="name" #name="ngModel"
+                [ngClass]="{'is-invalid': name.invalid && name.touched}" required minlength="5" type="text"
+                class="form-control mt-1" placeholder="write a name..." aria-label="Example text with button addon"
+                aria-describedby="button-addon1">
 
             <label class="header-font float-left mt-3">Description:</label>
             <div class="input-group">
                 <!-- form description -->
-                <textarea name="description" class="form-control mt-1" rows="4" aria-label="With textarea"
+                <textarea [(ngModel)]="listDescription" name="description" #description="ngModel"
+                    [ngClass]="{'is-invalid': description.invalid && description.touched}" required
+                    class="form-control mt-1" rows="4" aria-label="With textarea" minlength="20"
                     placeholder="(e.g) This list contains the 500 most common characters that appear in a newspaper."></textarea>
             </div>
+
             <label class="header-font float-left mt-4">Tags:</label>
             <!-- form tags -->
-            <input name="tags" type="text" class="form-control mt-1"
-                placeholder="seperate by comma (e.g): JLPT, N5, N4, n3, jlpt test, newspaper"
+            <input [(ngModel)]="listTags" name="tags" #tags="ngModel"
+                [ngClass]="{'is-invalid': tags.invalid && tags.touched}" required type="text" class="form-control mt-1"
+                minlength="1" placeholder="seperate by comma (e.g): JLPT, N5, N4, n3, jlpt test, newspaper"
                 aria-label="Example text with button addon" aria-describedby="button-addon1">
+
+            <label class="header-font float-left mt-3">Kanji characters:</label>
             <hr>
-            <a href="#" class="super-button mx-3 px-5">Submit</a>
+            <label class="text-left">You can just paste characters in here, no need to seperate each character with
+                spaces or comma's.
+                If you don't have a Japanese keyboard installed you can use a english-japanese dictionary like: <a
+                    href="https://jisho.org/search/%20%23kanji">jisho</a>. Just copy paste each character you
+                need.</label>
+            <div class="input-group">
+                <!-- form kanji -->
+                <textarea [(ngModel)]="listKanji" name="kanji" #kanji="ngModel"
+                    [ngClass]="{'is-invalid': kanji.invalid && kanji.touched}" required class="form-control mt-1"
+                    rows="5" aria-label="With textarea" minlength="3"
+                    placeholder="(e.g) This list contains the 500 most common characters that appear in a newspaper."></textarea>
+            </div>
+            <hr>
+            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="kanjiListForm.invalid"
+                routerLink="..">Submit</button>
             <hr>
         </form>
     </div>
