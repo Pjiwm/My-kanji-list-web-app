@@ -12,6 +12,12 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BackgroundComponent } from './background/background.component';
+import { AboutComponent } from './pages/about/about.component';
+import { KanjilistComponent } from './pages/kanjilist/kanjilist.component';
+import { KanjilistDetailComponent } from './pages/kanjilist.detail/kanjilist.detail.component';
+import { KanjiList } from './models/kanji.list';
+import { KanjilistNewComponent } from './pages/kanjilist.new/kanjilist.new.component';
+import { KanjilistEditComponent } from './pages/kanjilist.edit/kanjilist.edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,12 @@ import { BackgroundComponent } from './background/background.component';
     HomeComponent,
     FooterComponent,
     NavbarComponent,
-    BackgroundComponent
+    BackgroundComponent,
+    AboutComponent,
+    KanjilistComponent,
+    KanjilistDetailComponent,
+    KanjilistNewComponent,
+    KanjilistEditComponent,
   ],
   imports: [
     BrowserModule,
