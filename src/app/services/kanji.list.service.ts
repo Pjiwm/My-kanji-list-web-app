@@ -69,7 +69,12 @@ export class KanjiListService {
   }
 
   pushItem(item: KanjiList) {
-    this.kanjiLists.push(item)
+    // this.kanjiLists.push(item)
+    // API call to add
+  }
+
+  editItem(item: KanjiList) {
+    // API call to edit
   }
 
   getForId(id: number) {
