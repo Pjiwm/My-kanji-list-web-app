@@ -4,17 +4,17 @@
     <div class="container-fluid">
 
         <h4 class="text-center">Kanji characters in this list:</h4>
-        <p class="text-left px-5">Kunyomi (訓読み) are the Japanese readings, onyomi are the chinese (音読み) readings,
+        <p class=" px-5">Kunyomi (訓読み) are the Japanese readings, onyomi are the chinese (音読み) readings,
             depending on the word you
             have to use the different reading. </p>
-        <div class="container">
+        <div class="container w-100">
             <span *ngFor="let details of kanjiDetails">
                 <div class="m-2 p-3">
                     <div class="container">
                         <div class="card bg-dark">
                             <h3 class="card-title pt-2 darker-bg py-2">{{details.meanings}}</h3>
                             <div class="row no-gutters">
-                                <div class="col-4">
+                                <div class="col-md-4 col-sm-12">
                                     <p class="kanji-size pt-3">{{details.literal}}</p>
                                 </div>
                                 <div class="col-8">
