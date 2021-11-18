@@ -35,14 +35,12 @@ h1 {
     color: white !important;
     font-size: 1.6em;
     font-family: 'Arial Bold', sans-serif;
-    text-decoration: underline;
   }
 
   .nav-link:hover {
     color: #8a0000 !important;
     font-size: 1.6em;
     font-family: 'Arial Bold', sans-serif;
-    text-decoration: underline;
     transition: color 0.2s ease-in;
     cursor:pointer;
   }
@@ -93,3 +91,16 @@ input[type="text"]{
   background-color:#353a40 !important;
   color: white !important;
   }
+
+a {
+  color: #eb0606;
+}
+
+a:hover {
+  color: #9c0101;
+}
+
+.validation-error {
+  color: #e00000;
+  size: 0.5em;
+}

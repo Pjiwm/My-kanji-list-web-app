@@ -17,6 +17,7 @@ import { KanjilistComponent } from './pages/kanjilist/kanjilist.component';
 import { KanjilistDetailComponent } from './pages/kanjilist.detail/kanjilist.detail.component';
 import { KanjiList } from './models/kanji.list';
 import { KanjilistNewComponent } from './pages/kanjilist.new/kanjilist.new.component';
+import { KanjilistEditComponent } from './pages/kanjilist.edit/kanjilist.edit.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { KanjilistNewComponent } from './pages/kanjilist.new/kanjilist.new.compo
     KanjilistComponent,
     KanjilistDetailComponent,
     KanjilistNewComponent,
+    KanjilistEditComponent,
   ],
   imports: [
     BrowserModule,

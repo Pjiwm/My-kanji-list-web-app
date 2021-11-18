@@ -1,6 +1,7 @@
 <div class="container transparent-field text-center">
     <div class="container-fluid">
-
+        <h1 class="header-font pt-2">You are editing the kanji list:</h1>
+        <h1 class="header-font">{{kanjiList?.name}}</h1>
         <form #kanjiListForm="ngForm" name="form" (ngSubmit)="kanjiListForm.form.valid && onSubmit()" novalidate>
 
             <label class="header-font float-left mt-4">Name:</label>

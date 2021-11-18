@@ -52,7 +52,7 @@ export class KanjiListService {
         id: 6,
         name: 'XL list',
         description: 'A big list with the same character for demonstration purposes',
-        kanji: ['重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',
+        kanji: ['上', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',
           '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',
           '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',
           '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重', '重',],
@@ -62,12 +62,19 @@ export class KanjiListService {
     ]
   }
 
+
+
   setOption(id: number, value: any) {
     this.kanjiLists[id] = value
   }
 
   pushItem(item: KanjiList) {
-    this.kanjiLists.push(item)
+    // this.kanjiLists.push(item)
+    // API call to add
+  }
+
+  editItem(item: KanjiList) {
+    // API call to edit
   }
 
   getForId(id: number) {

@@ -2,16 +2,36 @@
     <h1 class="header-font pt-3">{{kanjiList?.name | uppercase}}</h1>
     <h3 class="py-3 mb-4">{{kanjiList?.description}}</h3>
     <div class="container-fluid">
-        <div class="dark-bg p-5">
-            <h4 class="text-left">Kanji characters in this list:</h4>
-            <div class="row ustify-content-center">
-                <span *ngFor="let kanji of kanjiList?.kanji; let i = index">
-                    <div class="col-12">
-                        <h2>{{kanji}}</h2>
+
+        <h4 class="text-center">Kanji characters in this list:</h4>
+        <p class="text-left px-5">Kunyomi (訓読み) are the Japanese readings, onyomi are the chinese (音読み) readings, depending on the word you
+            have to use the different reading. </p>
+        <div class="container">
+            <span *ngFor="let details of kanjiDetails">
+                <div class="m-2 p-3">
+                    <div class="container">
+                        <div class="card bg-dark">
+                            <h3 class="card-title pt-2 darker-bg py-2">{{details.meanings}}</h3>
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <p class="kanji-size pt-3">{{details.literal}}</p>
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <p class="card-text readings"><small>訓読 kunyomi:</small></p>
+                                        <p class="card-text readings">{{details.kunyomi}}</p>
+                                        <hr>
+                                        <p class="card-text readings"><small>訓読 onyomi:</small></p>
+                                        <p class="card-text readings">{{details.onyomi}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </span>
-            </div>
+                </div>
+            </span>
         </div>
+        <p class="text-right header-font pt-2">List created on: {{kanjiList?.creationDate | date}}</p>
         <hr>
     </div>
 </div>
