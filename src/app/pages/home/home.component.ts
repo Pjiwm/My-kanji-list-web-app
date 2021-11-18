@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 
 // @ts-ignore
 import Typewriter from 't-writer.js'
+// @ts-ignore
+import Kanji from 'kanji.js'
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    const characterList: string[] = this.getRandomKanji()
     const target = document.querySelector('.japanese-tw')
     const options = {
       loop: true,
@@ -21,8 +23,8 @@ export class HomeComponent implements OnInit {
 
       blinkSpeed: 400,
 
-      typeSpeed: 300,
-      deleteSpeed: 340,
+      typeSpeed: 500,
+      deleteSpeed: 500,
 
       typeSpeedMin: 65,
       typeSpeedMax: 115,
@@ -41,23 +43,19 @@ export class HomeComponent implements OnInit {
     writer
       .strings(
         800,
-        "今日",
-        "漢字", 
-        "命",
-        "学",
-        "本質",
-        "刑部",
-        "物知",
-        "考",
-        "本",
-        "覚",
-        "翻訳",
-        "頭",
-        "勉強",
-        "脳",
-        "図書館"
+        ...characterList
       )
       .start()
+  }
+
+  private getRandomKanji(): string[] {
+    let characterList: any[] = []
+    const start = Math.floor(Math.random() * (800 - 0 + 1)) + 0
+    for (let i = 0; i < 100; i++) {
+      const step = Math.floor(Math.random() * (50 - 0 + 1)) + 0
+      characterList.push(Kanji.dump()[start + step].literal)
+    }
+    return characterList
   }
 
 
