@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+
 // @ts-ignore
 import Typewriter from 't-writer.js'
 
@@ -17,27 +18,26 @@ export class HomeComponent implements OnInit {
     const options = {
       loop: true,
       animateCursor: true,
-    
+
       blinkSpeed: 400,
-    
+
       typeSpeed: 300,
       deleteSpeed: 340,
-    
+
       typeSpeedMin: 65,
       typeSpeedMax: 115,
-    
+
       deleteSpeedMin: 40,
       deleteSpeedMax: 90,
-    
+
       typeClass: 'type-span',
       cursorClass: 'cursor-span',
-    
+
       typeColor: 'white',
       cursorColor: 'white'
     }
 
     const writer = new Typewriter(target, options)
-    
     writer
       .strings(
         800,
@@ -60,6 +60,6 @@ export class HomeComponent implements OnInit {
       .start()
   }
 
-  
+
 
 }

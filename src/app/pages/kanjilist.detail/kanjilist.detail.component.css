@@ -1,0 +1,12 @@
+.readings {
+    font-size: 1.5em;
+}
+
+.kanji-size {
+    font-size: 8em;
+}
+
+.darker-bg {
+    background-color: #292c30 !important;
+    border-radius: 5px !important;
+  }

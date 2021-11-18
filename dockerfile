@@ -3,7 +3,7 @@ RUN mkdir -p /usr/src/app/
 RUN chown -R node:node /usr/src/app/
 WORKDIR /usr/src/app
 COPY ./package*.json ./
-RUN npm update
+# RUN npm update
 RUN npm install
 
 # angular
