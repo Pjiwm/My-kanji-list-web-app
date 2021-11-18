@@ -1,6 +1,12 @@
 {
   "hosting": {
     "public": "dist/angular-sandbox",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ], 
     "ignore": [
       "firebase.json",
       "**/.*",
