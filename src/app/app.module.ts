@@ -15,7 +15,6 @@ import { BackgroundComponent } from './background/background.component';
 import { AboutComponent } from './pages/about/about.component';
 import { KanjilistComponent } from './pages/kanjilist/kanjilist.component';
 import { KanjilistDetailComponent } from './pages/kanjilist.detail/kanjilist.detail.component';
-import { KanjiList } from './models/kanji.list';
 import { KanjilistNewComponent } from './pages/kanjilist.new/kanjilist.new.component';
 import { KanjilistEditComponent } from './pages/kanjilist.edit/kanjilist.edit.component';
 
@@ -36,7 +35,7 @@ import { KanjilistEditComponent } from './pages/kanjilist.edit/kanjilist.edit.co
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
