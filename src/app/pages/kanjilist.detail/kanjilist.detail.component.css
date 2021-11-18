@@ -1,15 +1,15 @@
 .readings {
-    /* font-size: 1.5em; */
-    font-size: 1.75vw;
+    font-size: 1.5em;
+    /* font-size: 1.75vw; */
 }
 
 .kanji-size {
     /* font-size: 8em; */
-    font-size: 8vw;
+    font-size: 8vmax;
 }
 
 .darker-bg {
     background-color: #292c30 !important;
     border-radius: 5px !important;
-    font-size: 2vw !important;
+    font-size: 2vmax !important;
   }

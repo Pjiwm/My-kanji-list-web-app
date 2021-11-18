@@ -1,7 +1,7 @@
 <div class="container transparent-field text-center">
     <h1 class="header-font pt-3">{{kanjiList?.name | uppercase}}</h1>
     <h3 class="py-3 mb-4">{{kanjiList?.description}}</h3>
-    <div class="container-fluid">
+    <div class="container">
 
         <h4 class="text-center">Kanji characters in this list:</h4>
         <p class=" px-5">Kunyomi (訓読み) are the Japanese readings, onyomi are the chinese (音読み) readings,
@@ -17,7 +17,7 @@
                                 <div class="col-md-4 col-sm-12">
                                     <p class="kanji-size pt-3">{{details.literal}}</p>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-md-8 col-sm-12">
                                     <div class="card-body">
                                         <p class="card-text readings"><small>訓読 kunyomi:</small></p>
                                         <p class="card-text readings">{{details.kunyomi}}</p>
