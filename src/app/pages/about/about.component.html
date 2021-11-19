@@ -26,7 +26,8 @@
 
     <h2 class="header-font pt-2">What are guides?</h2>
     <p>A guide is a set of instructions on how to go about learning the characters from a kanji list.
-        Each guide has 1 kanji list they reference. In the guide tips and information will be given about the characters
+        Each guide has 1 or no kanji list they reference. In the guide tips and information will be given about the
+        characters
         from the kanji list. For example we could have a kanji list with the 100 most common kanji that appear in
         newspapers.
         The guide could give some information about kids newspaper that make practice reading those 100 characters
@@ -36,11 +37,21 @@
     </p>
 
     <h2 class="header-font pt-2">What are practice resources?</h2>
-    <p>A practice resource is an article or story for a kanji list. Each practice resource references 1 kanji list.
+    <p>A practice resource is an article or story for a kanji list. Each practice resource references 1 or no kanji
+        list.
         For example we translate a fairy tail and only use
         the characters that appear in the kanji list. Instead of functioning like a guide where tips and tricks are
         given, it's an actual exercise you could practice reading with. The author of the practice resource could
         possibly also give a full text translation or just the meaning of some of the words used written with the
         characters.</p>
+
+    <h2 class="header-font pt-2">Data model</h2>
+    <p>The data model consists of the entities: KanjiList, Guide, Practice Resource, Reviews and User. As seen in the
+        image below
+        Guide and Practice Resource both reference the id of a kanjilist. It's better to reference to the entity rather
+        than to embed it as a subdocument, this is simply because different Guides and Practice Resources can use the
+        same kanji list. This prevent a lot of duplicated data. Guides and Practice Resources both have the subdocument
+        reviews. It's better to embed these because a review can only belong to one Practice Resource or Guide.</p>
+    <img class="pb-3 img-fluid" src="../../../assets/images/data-model.png" alt="image">
 
 </div>
