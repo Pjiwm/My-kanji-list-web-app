@@ -11,4 +11,3 @@ services:
     environment:
       SONAR_LOGIN_KEY: ${SONAR_LOGIN_KEY}
       SONAR_PROJECT_KEY: ${SONAR_PROJECT_KEY}
-      PERSONAL_NAME: ${PERSONAL_NAME}
