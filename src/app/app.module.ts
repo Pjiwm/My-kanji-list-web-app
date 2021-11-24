@@ -20,6 +20,7 @@ import { KanjilistEditComponent } from './pages/kanjilist.edit/kanjilist.edit.co
 import { GuideComponent } from './pages/guide/guide.component';
 import { GuideDetailComponent } from './pages/guide.detail/guide.detail.component';
 import { GuideNewComponent } from './pages/guide.new/guide.new.component';
+import { GuideEditComponent } from './pages/guide.edit/guide.edit.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { GuideNewComponent } from './pages/guide.new/guide.new.component';
     GuideComponent,
     GuideDetailComponent,
     GuideNewComponent,
+    GuideEditComponent,
   ],
   imports: [
     BrowserModule,
