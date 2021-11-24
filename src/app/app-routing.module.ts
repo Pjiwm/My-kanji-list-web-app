@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { AboutComponent } from './pages/about/about.component'
 import { GuideDetailComponent } from './pages/guide.detail/guide.detail.component'
+import { GuideNewComponent } from './pages/guide.new/guide.new.component'
 import { GuideComponent } from './pages/guide/guide.component'
 import { HomeComponent } from './pages/home/home.component'
 import { KanjilistDetailComponent } from './pages/kanjilist.detail/kanjilist.detail.component'
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'kanjilist/:id', pathMatch: 'full', component: KanjilistDetailComponent },
   // guide
   { path: 'guide', pathMatch: 'full', component: GuideComponent },
+  { path: 'guide/new', pathMatch: 'full', component: GuideNewComponent },
   { path: 'guide/:id', pathMatch: 'full', component: GuideDetailComponent },
   { path: '**', redirectTo: '/' }
 ]

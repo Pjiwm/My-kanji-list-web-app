@@ -19,6 +19,7 @@ import { KanjilistNewComponent } from './pages/kanjilist.new/kanjilist.new.compo
 import { KanjilistEditComponent } from './pages/kanjilist.edit/kanjilist.edit.component';
 import { GuideComponent } from './pages/guide/guide.component';
 import { GuideDetailComponent } from './pages/guide.detail/guide.detail.component';
+import { GuideNewComponent } from './pages/guide.new/guide.new.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { GuideDetailComponent } from './pages/guide.detail/guide.detail.componen
     KanjilistEditComponent,
     GuideComponent,
     GuideDetailComponent,
+    GuideNewComponent,
   ],
   imports: [
     BrowserModule,
