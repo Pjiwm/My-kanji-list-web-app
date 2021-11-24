@@ -9,17 +9,17 @@ import { GuideService } from 'src/app/services/guide.service'
 })
 export class GuideNewComponent implements OnInit {
   guideService: GuideService
-  title: string
-  content: string
-  tags: string
+  guideTitle: string
+  guideContent: string
+  guideTags: string
   creationDate: Date
   listId: number
 
   constructor(guideService: GuideService) {
     this.guideService = guideService
-    this.title = ""
-    this.content = ""
-    this.tags = ""
+    this.guideTitle = ""
+    this.guideContent = ""
+    this.guideTags = ""
     this.listId = this.guideService.getOption().length + 1
     this.creationDate = new Date()
   }
@@ -29,11 +29,11 @@ export class GuideNewComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let tagsArray = this.tags?.split(',')
+    let tagsArray = this.guideTags?.split(',')
     let newGuide: Guide = {
       id: this.listId,
-      title: this.title,
-      content: this.content,
+      title: this.guideTitle,
+      content: this.guideContent,
       tags: tagsArray,
       creationDate: this.creationDate
     }
