@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { AboutComponent } from './pages/about/about.component'
 import { GuideDetailComponent } from './pages/guide.detail/guide.detail.component'
+import { GuideEditComponent } from './pages/guide.edit/guide.edit.component'
 import { GuideNewComponent } from './pages/guide.new/guide.new.component'
 import { GuideComponent } from './pages/guide/guide.component'
 import { HomeComponent } from './pages/home/home.component'
@@ -22,6 +23,7 @@ const routes: Routes = [
   // guide
   { path: 'guide', pathMatch: 'full', component: GuideComponent },
   { path: 'guide/new', pathMatch: 'full', component: GuideNewComponent },
+  { path: 'guide/edit/:id', pathMatch: 'full', component: GuideEditComponent },
   { path: 'guide/:id', pathMatch: 'full', component: GuideDetailComponent },
   { path: '**', redirectTo: '/' }
 ]

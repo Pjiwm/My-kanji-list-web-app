@@ -36,6 +36,8 @@ export class GuideEditComponent implements OnInit {
       if (this.id !== null) {
         this.guide = this.guideService.getForId(this.id)
         this.guideTags = this.tagArrayToString(this.guide.tags)
+        this.guideTitle = this.guide.title
+        this.guideContent = this.guide.content
       }
     })
   }
