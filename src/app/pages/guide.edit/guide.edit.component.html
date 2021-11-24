@@ -1,0 +1,41 @@
+<div class="container transparent-field text-center">
+    <form #guideForm="ngForm" name="form" (ngSubmit)="guideForm.form.valid && onSubmit()" novalidate>
+        <label class="header-font float-left mt-4">Title:</label>
+
+        <!-- form title -->
+        <input [(ngModel)]="guideTitle" name="title" #title="ngModel"
+            [ngClass]="{'is-invalid': title.invalid && title.touched}" required minlength="15" type="text"
+            class="form-control mt-1" placeholder="title..." aria-label="Example text with button addon"
+            aria-describedby="button-addon1">
+        <div *ngIf="title.invalid && title.touched" class="text-left mx-1 mt-1">
+            <p class="validation-error">The guide needs a title! Give it a title of at least 15 characters!</p>
+        </div>
+
+        <label class="header-font float-left mt-3">Guide:</label>
+        <div class="input-group">
+            <!-- form content/guide -->
+            <textarea [(ngModel)]="guideContent" name="content" #content="ngModel"
+                [ngClass]="{'is-invalid': content.invalid && content.touched}" required class="form-control mt-1"
+                rows="16" aria-label="With textarea" minlength="250" placeholder="This guide is about...."></textarea>
+        </div>
+        <div *ngIf="content.invalid && content.touched" class="text-left mx-1 mt-1">
+            <p class="validation-error">You need to write a guide of at least 250 characters!</p>
+        </div>
+
+        <label class="header-font float-left mt-4">Tags:</label>
+        <!-- form tags -->
+        <input [(ngModel)]="guideTags" name="tags" #tags="ngModel"
+            [ngClass]="{'is-invalid': tags.invalid && tags.touched}" required type="text" class="form-control mt-1"
+            minlength="1" placeholder="seperate by comma (e.g): JLPT, N5, N4, n3, jlpt test, newspaper"
+            aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <div *ngIf="tags.invalid && tags.touched" class="text-left mx-1 mt-1">
+            <p class="validation-error">Tags are a required field. Add 1 tag of at least 1 character long!</p>
+        </div>
+
+
+        <hr>
+        <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="guideForm.invalid"
+            routerLink="../">Submit</button>
+        <hr>
+    </form>
+</div>
