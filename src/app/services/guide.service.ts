@@ -4,7 +4,7 @@ import { Guide } from '../models/guide'
 @Injectable({
   providedIn: 'root'
 })
-export class GuideServiceService {
+export class GuideService {
   private guides: Guide[]
   constructor() {
     this.guides = [
