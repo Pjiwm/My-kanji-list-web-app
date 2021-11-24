@@ -18,7 +18,7 @@ import { KanjilistDetailComponent } from './pages/kanjilist.detail/kanjilist.det
 import { KanjilistNewComponent } from './pages/kanjilist.new/kanjilist.new.component';
 import { KanjilistEditComponent } from './pages/kanjilist.edit/kanjilist.edit.component';
 import { GuideComponent } from './pages/guide/guide.component';
-import { GuideDetailComponent } from './pages/guide-detail/guide-detail.component';
+import { GuideDetailComponent } from './pages/guide.detail/guide.detail.component';
 
 @NgModule({
   declarations: [

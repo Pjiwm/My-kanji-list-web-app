@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 import { Guide } from '../models/guide'
 
 @Injectable({
@@ -11,7 +11,11 @@ export class GuideService {
       {
         id: 1,
         title: 'My sample guide',
-        content: "test",
+        content: "lorem\nloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem"
+          + "\nloremloremloremloremloremloremloremloremloremloremloremlorem"
+          + "loremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem\n"
+          + "loremloremloremloremloremloremloremloremloremloremloremloremloremloremlo"
+          + "remloremloremloremloremloremloremloremloremloremlorem\n",
         tags: ['numbers', '1st grade', 'easy'],
         creationDate: new Date("2020-01-16")
       },
