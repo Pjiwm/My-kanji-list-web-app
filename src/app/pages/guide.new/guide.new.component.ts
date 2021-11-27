@@ -13,14 +13,14 @@ export class GuideNewComponent implements OnInit {
   guideContent: string
   guideTags: string
   creationDate: Date
-  listId: number
+  guideId: number
 
   constructor(guideService: GuideService) {
     this.guideService = guideService
     this.guideTitle = ""
     this.guideContent = ""
     this.guideTags = ""
-    this.listId = this.guideService.getOption().length + 1
+    this.guideId = this.guideService.getNewId()
     this.creationDate = new Date()
   }
 
@@ -31,13 +31,13 @@ export class GuideNewComponent implements OnInit {
   onSubmit(): void {
     let tagsArray = this.guideTags?.split(',')
     let newGuide: Guide = {
-      id: this.listId,
+      id: this.guideId,
       title: this.guideTitle,
       content: this.guideContent,
       tags: tagsArray,
       creationDate: this.creationDate
     }
-    this.guideService.pushItem(newGuide)
+    this.guideService.postItem(newGuide)
   }
 
 }

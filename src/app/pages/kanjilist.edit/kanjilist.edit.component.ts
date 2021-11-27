@@ -37,8 +37,8 @@ export class KanjilistEditComponent implements OnInit {
       this.id = <number><unknown>param.get('id')
     })
 
-    if (this.id !== null) {
-      this.kanjiList = this.kanjiListService.getForId(this.id)
+    this.kanjiList = this.kanjiListService.getById(this.id)
+    if (this.kanjiList !== undefined) {
       this.listTags = this.tagArrayToString(this.kanjiList.tags)
       this.listKanji = this.kanjiArrayToString(this.kanjiList.kanji)
       this.listDate = this.kanjiList.creationDate
@@ -59,7 +59,7 @@ export class KanjilistEditComponent implements OnInit {
       if (i !== tags.length - 1) {
         returnString += ", "
       }
-      console.log(i + ' ' + returnString )
+      console.log(i + ' ' + returnString)
     }
     return returnString
   }
@@ -90,7 +90,7 @@ export class KanjilistEditComponent implements OnInit {
       kanji: kanjiArray,
       creationDate: this.listDate
     }
-    this.kanjiListService.editItem(newKanjiList)
+    this.kanjiListService.putItem(newKanjiList)
   }
 
 }

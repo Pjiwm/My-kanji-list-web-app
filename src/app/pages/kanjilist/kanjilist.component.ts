@@ -16,7 +16,11 @@ export class KanjilistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.kanjiLists = this.kanjiListService.getOption()
+    this.kanjiLists = this.kanjiListService.getAll()
+  }
+
+  onDelete(id: number): void {
+    this.kanjiListService.removebyId(id)
   }
 
 }

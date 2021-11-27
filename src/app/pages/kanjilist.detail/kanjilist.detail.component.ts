@@ -27,8 +27,8 @@ export class KanjilistDetailComponent implements OnInit {
       this.id = <number><unknown>param.get('id')
     })
 
-    if (this.id !== null) {
-      this.kanjiList = this.kanjiListService.getForId(this.id)
+    this.kanjiList = this.kanjiListService.getById(this.id)
+    if (this.kanjiList !== undefined) {
       this.kanjiList.kanji.forEach((kanji) => {
         const details = Kanji.getDetails(kanji)
         this.kanjiDetails.push({
@@ -39,7 +39,7 @@ export class KanjilistDetailComponent implements OnInit {
           strokeCount: details.stroke_count
         })
       })
-      console.log(this.kanjiDetails)
     }
+    console.log(this.kanjiDetails)
   }
 }

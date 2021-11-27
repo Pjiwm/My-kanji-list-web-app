@@ -22,7 +22,7 @@ export class KanjilistNewComponent implements OnInit {
     this.listDescription = ""
     this.listTags = ""
     this.listKanji = ""
-    this.listId = this.kanjiListService.getOption().length + 1
+    this.listId = this.kanjiListService.getNewId()
     this.listDate = new Date()
   }
 
@@ -41,7 +41,8 @@ export class KanjilistNewComponent implements OnInit {
       kanji: kanjiArray,
       creationDate: this.listDate
     }
-    this.kanjiListService.pushItem(newKanjiList)
+    this.kanjiListService.postItem(newKanjiList)
+    console.log('added kanji list')
   }
 
 }

@@ -64,24 +64,29 @@ export class KanjiListService {
 
 
 
-  setOption(id: number, value: any) {
-    this.kanjiLists[id] = value
+  postItem(item: KanjiList) {
+    this.kanjiLists.push(item)
   }
 
-  pushItem(item: KanjiList) {
-    // this.kanjiLists.push(item)
-    // API call to add
+  putItem(item: KanjiList) {
+    const index = this.kanjiLists.findIndex((p) => p.id == item.id)
+    this.kanjiLists[index] = item
   }
 
-  editItem(item: KanjiList) {
-    // API call to edit
+  getById(id: number) {
+    return this.kanjiLists.find((p) => p.id == id)
   }
 
-  getForId(id: number) {
-    return this.kanjiLists[id - 1]
+  removebyId(id: number) {
+    const index = this.kanjiLists.findIndex((p) => p.id == id)
+    this.kanjiLists.splice(index, 1)
   }
 
-  getOption() {
+  getAll() {
     return this.kanjiLists
+  }
+
+  getNewId() {
+    return this.kanjiLists[this.kanjiLists.length - 1].id + 1
   }
 }

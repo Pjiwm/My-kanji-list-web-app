@@ -16,7 +16,11 @@ export class GuideComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.guideList = this.guideService.getOption()
+    this.guideList = this.guideService.getAll()
+  }
+
+  onDelete(id: number): void {
+    this.guideService.removebyId(id)
   }
 
 }

@@ -32,44 +32,45 @@ export class GuideEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       this.id = <number><unknown>param.get('id')
+      this.guide = this.guideService.getById(this.id)
 
-      if (this.id !== null) {
-        this.guide = this.guideService.getForId(this.id)
+      if (this.guide !== undefined) {
         this.guideTags = this.tagArrayToString(this.guide.tags)
         this.guideTitle = this.guide.title
         this.guideContent = this.guide.content
       }
+
     })
   }
 
-    /**
-   * We want to get the tags array as a string so it can be displayed in a form field.
-   * We iterate over it and add comma's after each word just how it was filled in when the user made a new list.
-   * @param tags - the tags from a kanji list we want to iterate over
-   * @returns - a string of all tags in the array seperated by comma and space
-   */
-     private tagArrayToString(tags: string[]): string {
-      let returnString = ""
-      for (let i = 0; i < tags.length; i++) {
-        returnString += tags[i]
-        if (i !== tags.length - 1) {
-          returnString += ", "
-        }
-        console.log(i + ' ' + returnString )
+  /**
+ * We want to get the tags array as a string so it can be displayed in a form field.
+ * We iterate over it and add comma's after each word just how it was filled in when the user made a new list.
+ * @param tags - the tags from a kanji list we want to iterate over
+ * @returns - a string of all tags in the array seperated by comma and space
+ */
+  private tagArrayToString(tags: string[]): string {
+    let returnString = ""
+    for (let i = 0; i < tags.length; i++) {
+      returnString += tags[i]
+      if (i !== tags.length - 1) {
+        returnString += ", "
       }
-      return returnString
+      console.log(i + ' ' + returnString)
     }
+    return returnString
+  }
 
-    onSubmit(): void {
-      let tagsArray = this.guideTags?.split(',')
-  
-      let newGuide: Guide = {
-        id: this.id,
-        title: this.guideTitle,
-        content: this.guideContent,
-        tags: tagsArray,
-        creationDate: this.creationDate
-      }
-      this.guideService.editItem(newGuide)
+  onSubmit(): void {
+    let tagsArray = this.guideTags?.split(',')
+
+    let newGuide: Guide = {
+      id: this.id,
+      title: this.guideTitle,
+      content: this.guideContent,
+      tags: tagsArray,
+      creationDate: this.creationDate
     }
+    this.guideService.putItem(newGuide)
+  }
 }

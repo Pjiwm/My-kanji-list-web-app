@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// stuff from tutorial
+import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 
 
@@ -44,6 +44,7 @@ import { GuideEditComponent } from './pages/guide.edit/guide.edit.component';
     AppRoutingModule,
     FormsModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
