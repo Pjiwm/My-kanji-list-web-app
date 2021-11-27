@@ -78,13 +78,8 @@ export class KanjiListService {
   }
 
   removebyId(id: number) {
-    console.log(`removing item with id: ${id}`)
     const index = this.kanjiLists.findIndex((p) => p.id == id)
-    console.log(index)
-    console.log(this.kanjiLists)
     this.kanjiLists.splice(index, 1)
-    console.log(this.kanjiLists)
-
   }
 
   getAll() {
