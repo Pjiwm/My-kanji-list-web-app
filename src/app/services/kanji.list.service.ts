@@ -68,20 +68,24 @@ export class KanjiListService {
     this.kanjiLists[id] = value
   }
 
-  pushItem(item: KanjiList) {
-    // this.kanjiLists.push(item)
+  postItem(item: KanjiList) {
+    this.kanjiLists.push(item)
     // API call to add
   }
 
-  editItem(item: KanjiList) {
+  putItem(item: KanjiList) {
     // API call to edit
   }
 
-  getForId(id: number) {
+  getById(id: number) {
     return this.kanjiLists[id - 1]
   }
 
-  getOption() {
+  removebyId(id: number) {
+    
+  }
+
+  getAll() {
     return this.kanjiLists
   }
 }

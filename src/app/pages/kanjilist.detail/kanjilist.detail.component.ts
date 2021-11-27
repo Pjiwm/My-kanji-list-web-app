@@ -28,7 +28,7 @@ export class KanjilistDetailComponent implements OnInit {
     })
 
     if (this.id !== null) {
-      this.kanjiList = this.kanjiListService.getForId(this.id)
+      this.kanjiList = this.kanjiListService.getById(this.id)
       this.kanjiList.kanji.forEach((kanji) => {
         const details = Kanji.getDetails(kanji)
         this.kanjiDetails.push({
