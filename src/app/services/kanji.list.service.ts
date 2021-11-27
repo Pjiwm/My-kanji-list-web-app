@@ -69,8 +69,8 @@ export class KanjiListService {
   }
 
   putItem(item: KanjiList) {
-    this.removebyId(item.id)
-    this.postItem(item)
+    const index = this.kanjiLists.findIndex((p) => p.id == item.id)
+    this.kanjiLists[index] = item
   }
 
   getById(id: number) {
@@ -89,5 +89,9 @@ export class KanjiListService {
 
   getAll() {
     return this.kanjiLists
+  }
+
+  getNewId() {
+    return this.kanjiLists[this.kanjiLists.length - 1].id + 1
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Guide } from 'src/app/models/guide'
 import { GuideService } from 'src/app/services/guide.service'
@@ -24,8 +24,7 @@ export class GuideDetailComponent implements OnInit {
       this.id = <number><unknown>param.get('id')
     })
 
-    if (this.id !== null) {
-      this.guide = this.guideService.getForId(this.id)
-    }
+      this.guide = this.guideService.getById(this.id)
+
   }
 }

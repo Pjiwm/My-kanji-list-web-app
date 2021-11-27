@@ -22,7 +22,7 @@ export class KanjilistNewComponent implements OnInit {
     this.listDescription = ""
     this.listTags = ""
     this.listKanji = ""
-    this.listId = this.kanjiListService.getAll().length + 1
+    this.listId = this.kanjiListService.getNewId()
     this.listDate = new Date()
   }
 

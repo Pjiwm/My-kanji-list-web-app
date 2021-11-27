@@ -59,24 +59,29 @@ export class GuideService {
 
 
 
-  setOption(id: number, value: any) {
-    this.guides[id] = value
+  postItem(item: Guide) {
+    this.guides.push(item)
   }
 
-  pushItem(item: Guide) {
-    // this.kanjiLists.push(item)
-    // API call to add
+  putItem(item: Guide) {
+    const index = this.guides.findIndex((p) => p.id == item.id)
+    this.guides[index] = item
   }
 
-  editItem(item: Guide) {
-    // API call to edit
+  getById(id: number) {
+    return this.guides.find((p) => p.id == id)
   }
 
-  getForId(id: number) {
-    return this.guides[id - 1]
+  removebyId(id: number) {
+    const index = this.guides.findIndex((p) => p.id == id)
+    this.guides.splice(index, 1)
   }
 
-  getOption() {
+  getAll() {
     return this.guides
+  }
+
+  getNewId() {
+    return this.guides[this.guides.length - 1].id + 1
   }
 }
