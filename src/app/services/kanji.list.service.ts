@@ -64,25 +64,27 @@ export class KanjiListService {
 
 
 
-  setOption(id: number, value: any) {
-    this.kanjiLists[id] = value
-  }
-
   postItem(item: KanjiList) {
     this.kanjiLists.push(item)
-    // API call to add
   }
 
   putItem(item: KanjiList) {
-    // API call to edit
+    this.removebyId(item.id)
+    this.postItem(item)
   }
 
   getById(id: number) {
-    return this.kanjiLists[id - 1]
+    return this.kanjiLists.find((p) => p.id == id)
   }
 
   removebyId(id: number) {
-    
+    console.log(`removing item with id: ${id}`)
+    const index = this.kanjiLists.findIndex((p) => p.id == id)
+    console.log(index)
+    console.log(this.kanjiLists)
+    this.kanjiLists.splice(index, 1)
+    console.log(this.kanjiLists)
+
   }
 
   getAll() {

@@ -19,4 +19,8 @@ export class KanjilistComponent implements OnInit {
     this.kanjiLists = this.kanjiListService.getAll()
   }
 
+  onDelete(id: number): void {
+    this.kanjiListService.removebyId(id)
+  }
+
 }
