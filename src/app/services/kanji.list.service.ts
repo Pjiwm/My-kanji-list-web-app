@@ -5,7 +5,7 @@ import { KanjiList } from '../models/kanji.list'
   providedIn: 'root'
 })
 export class KanjiListService {
-  private kanjiLists: KanjiList[]
+  kanjiLists: KanjiList[]
   constructor() {
     this.kanjiLists = [
       {
