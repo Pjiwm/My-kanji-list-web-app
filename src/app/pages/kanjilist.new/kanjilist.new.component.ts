@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { KanjiListService } from 'src/app/services/kanji.list.service'
 import { KanjiList } from 'src/app/models/kanji.list'
+//@ts-ignore
+import Kanji from 'kanji.js'
+import { NgModel } from '@angular/forms'
 
 @Component({
   selector: 'app-kanjilist.new',
@@ -45,4 +48,17 @@ export class KanjilistNewComponent implements OnInit {
     console.log('added kanji list')
   }
 
+
+  incorrectKanjiValidator(model: NgModel) {
+    if(model.value === null) {
+      return false
+    }
+    const text = model.value
+    for (let i = 0; i < text.length; i++) {
+      if (Kanji.getDetails(text[i]) === null) {
+        return true
+      }
+    }
+    return false
+  }
 }
