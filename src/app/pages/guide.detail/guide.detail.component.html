@@ -2,7 +2,7 @@
     <h1 class="header-font pt-3">{{guide?.title | uppercase}}</h1>
     <h6>{{guide?.creationDate | date}}</h6>
     <div *ngIf="guide?.kanjiListId !== undefined">
-        <h3>This Guide requires the kanjiList:</h3>
+        <h3>This Guide requires the kanji list:</h3>
         <a class="super-button no-shadow"
             [routerLink]="['../../kanjilist/', guide?.kanjiListId]">{{kanjiList?.name}}</a>
     </div>
