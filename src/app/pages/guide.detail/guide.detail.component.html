@@ -1,8 +1,12 @@
 <div class="container transparent-field text-center">
     <h1 class="header-font pt-3">{{guide?.title | uppercase}}</h1>
     <h6>{{guide?.creationDate | date}}</h6>
-    <p class="py-3 mb-4">{{guide?.content}}</p>
+    <div *ngIf="guide?.kanjiListId !== undefined">
+        <h3>This Guide requires the kanjiList:</h3>
+        <a class="super-button no-shadow"
+            [routerLink]="['../../kanjilist/', guide?.kanjiListId]">{{kanjiList?.name}}</a>
+    </div>
     <div class="container">
-
+        <article class="py-3 mb-4">{{guide?.content}}</article>
     </div>
 </div>
