@@ -48,16 +48,19 @@
             <div class="input-group">
                 <!-- form kanji -->
                 <textarea [(ngModel)]="listKanji" name="kanji" #kanji="ngModel"
-                    [ngClass]="{'is-invalid': kanji.invalid && kanji.touched}" required class="form-control mt-1"
-                    rows="5" aria-label="With textarea" minlength="3"
+                    [ngClass]="{'is-invalid': (kanji.invalid && kanji.touched) || incorrectKanjiValidator(kanji)}"
+                    required class="form-control mt-1" rows="5" aria-label="With textarea" minlength="3"
                     placeholder="(e.g) This list contains the 500 most common characters that appear in a newspaper."></textarea>
             </div>
             <div *ngIf="kanji.invalid && kanji.touched" class="text-left mx-1 mt-1">
                 <p class="validation-error">Kanji characters are a required field. Add atleast 3 different characters!
                 </p>
             </div>
+            <div *ngIf="incorrectKanjiValidator(kanji)">
+                <p class="validation-error">The only allowed characters are Kanji characters!</p>
+            </div>
             <hr>
-            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="kanjiListForm.invalid"
+            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="kanjiListForm.invalid || incorrectKanjiValidator(kanji)"
                 routerLink="../../" (click)="onSubmit()" type="submit">Submit</button>
             <hr>
         </form>

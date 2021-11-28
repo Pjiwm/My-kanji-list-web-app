@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core'
+import { NgModel } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { KanjiList } from 'src/app/models/kanji.list'
 import { KanjiListService } from 'src/app/services/kanji.list.service'
+//@ts-ignore
+import Kanji from 'kanji.js'
+
 @Component({
   selector: 'app-kanjilist-edit',
   templateUrl: './kanjilist.edit.component.html',
@@ -91,6 +95,19 @@ export class KanjilistEditComponent implements OnInit {
       creationDate: this.listDate
     }
     this.kanjiListService.putItem(newKanjiList)
+  }
+
+  incorrectKanjiValidator(model: NgModel) {
+    if(model.value === null) {
+      return false
+    }
+    const text = model.value
+    for (let i = 0; i < text.length; i++) {
+      if (Kanji.getDetails(text[i]) === null) {
+        return true
+      }
+    }
+    return false
   }
 
 }

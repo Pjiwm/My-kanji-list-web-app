@@ -10,7 +10,8 @@
                 class="form-control mt-1" placeholder="write a name..." aria-label="Example text with button addon"
                 aria-describedby="button-addon1">
             <div *ngIf="name.invalid && name.touched" class="text-left mx-1 mt-1">
-                <p class="validation-error">Name is a required field. Give your list a name of at least 5 characters long!</p>
+                <p class="validation-error">Name is a required field. Give your list a name of at least 5 characters
+                    long!</p>
             </div>
 
             <label class="header-font float-left mt-3">Description:</label>
@@ -22,7 +23,8 @@
                     placeholder="(e.g) This list contains the 500 most common characters that appear in a newspaper."></textarea>
             </div>
             <div *ngIf="description.invalid && description.touched" class="text-left mx-1 mt-1">
-                <p class="validation-error">Description is a required field. Write at least a description of 20 characters long!</p>
+                <p class="validation-error">Description is a required field. Write at least a description of 20
+                    characters long!</p>
             </div>
 
             <label class="header-font float-left mt-4">Tags:</label>
@@ -45,16 +47,20 @@
             <div class="input-group">
                 <!-- form kanji -->
                 <textarea [(ngModel)]="listKanji" name="kanji" #kanji="ngModel"
-                    [ngClass]="{'is-invalid': kanji.invalid && kanji.touched}" required class="form-control mt-1"
-                    rows="5" aria-label="With textarea" minlength="3"
+                    [ngClass]="{'is-invalid': (kanji.invalid && kanji.touched) || incorrectKanjiValidator(kanji)}"
+                    required class="form-control mt-1" rows="5" aria-label="With textarea" minlength="3"
                     placeholder="(e.g) This list contains the 500 most common characters that appear in a newspaper."></textarea>
             </div>
             <div *ngIf="kanji.invalid && kanji.touched" class="text-left mx-1 mt-1">
-                <p class="validation-error">Kanji characters are a required field. Add atleast 3 different characters!</p>
+                <p class="validation-error">Kanji characters are a required field. Add atleast 3 different characters!
+                </p>
+            </div>
+            <div *ngIf="incorrectKanjiValidator(kanji)">
+                <p class="validation-error">The only allowed characters are Kanji characters!</p>
             </div>
             <hr>
-            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="kanjiListForm.invalid"
-                routerLink="../" (click)="onSubmit()" type="submit">Submit</button>
+            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="kanjiListForm.invalid || incorrectKanjiValidator(kanji)" routerLink="../"
+                (click)="onSubmit()" type="submit">Submit</button>
             <hr>
         </form>
     </div>
