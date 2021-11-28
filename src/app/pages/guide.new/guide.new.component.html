@@ -32,6 +32,13 @@
             <p class="validation-error">Tags are a required field. Add 1 tag of at least 1 character long!</p>
         </div>
 
+        <label class="header-font float-left mt-4">KanjiList needed for guide:</label>
+
+        <select class="form-control" name="kanjilist" id="kanji_list" [(ngModel)]="kanjiListId" #kanjilist="ngModel">
+            <option selected>none</option>
+            <option *ngFor="let optionKanjiList of kanjiLists" [value]="optionKanjiList.id">{{optionKanjiList.name}}</option>
+        </select>
+
 
         <hr>
         <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="guideForm.invalid"

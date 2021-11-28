@@ -17,42 +17,47 @@ export class GuideService {
           + "loremloremloremloremloremloremloremloremloremloremloremloremloremloremlo"
           + "remloremloremloremloremloremloremloremloremloremlorem\n",
         tags: ['numbers', '1st grade', 'easy'],
-        creationDate: new Date("2020-01-16")
+        creationDate: new Date("2020-01-16"),
+        kanjiListId: 2
       },
       {
         id: 2,
         title: 'My sample guide',
         content: "test",
         tags: ['numbers', '1st grade', 'easy'],
-        creationDate: new Date("2020-01-16")
+        creationDate: new Date("2020-01-16"),
       },
       {
         id: 3,
         title: 'My sample guide',
         content: "test",
         tags: ['numbers', '1st grade', 'easy'],
-        creationDate: new Date("2020-01-16")
+        creationDate: new Date("2020-01-16"),
+        kanjiListId: 3
       },
       {
         id: 4,
         title: 'My sample guide',
         content: "test",
         tags: ['numbers', '1st grade', 'easy'],
-        creationDate: new Date("2020-01-16")
+        creationDate: new Date("2020-01-16"),
+        kanjiListId: 5
       },
       {
         id: 5,
         title: 'My sample guide',
         content: "test",
         tags: ['numbers', '1st grade', 'easy'],
-        creationDate: new Date("2020-01-16")
+        creationDate: new Date("2020-01-16"),
+        kanjiListId: 2
       },
       {
         id: 6,
         title: 'My sample guide',
         content: "test",
         tags: ['numbers', '1st grade', 'easy'],
-        creationDate: new Date("2020-01-16")
+        creationDate: new Date("2020-01-16"),
+        kanjiListId: 4
       }
     ]
   }

@@ -92,6 +92,11 @@ input[type="text"]{
   color: white !important;
   }
 
+  select {
+    background-color:#353a40 !important;
+    color: white !important;
+  }
+
 a {
   color: #eb0606;
 }

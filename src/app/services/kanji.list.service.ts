@@ -73,7 +73,7 @@ export class KanjiListService {
     this.kanjiLists[index] = item
   }
 
-  getById(id: number) {
+  getById(id?: number) {
     return this.kanjiLists.find((p) => p.id == id)
   }
 
