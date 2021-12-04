@@ -10,15 +10,20 @@ import { KanjilistDetailComponent } from './pages/kanjilist.detail/kanjilist.det
 import { KanjilistEditComponent } from './pages/kanjilist.edit/kanjilist.edit.component'
 import { KanjilistNewComponent } from './pages/kanjilist.new/kanjilist.new.component'
 import { KanjilistComponent } from './pages/kanjilist/kanjilist.component'
+import { LoginComponent } from './pages/login/login.component'
+import { RegisterComponent } from './pages/register/register.component'
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'about', pathMatch: 'full', component: AboutComponent },
+  // login-register
+  { path: 'login', pathMatch: 'full', component: LoginComponent },
+  { path: 'register', pathMatch: 'full', component: RegisterComponent },
   // kanjilist
   { path: 'kanjilist', pathMatch: 'full', component: KanjilistComponent },
   { path: 'kanjilist/new', pathMatch: 'full', component: KanjilistNewComponent },
-  {path: 'kanjilist/edit/:id', pathMatch: 'full', component: KanjilistEditComponent},
+  { path: 'kanjilist/edit/:id', pathMatch: 'full', component: KanjilistEditComponent },
   { path: 'kanjilist/:id', pathMatch: 'full', component: KanjilistDetailComponent },
   // guide
   { path: 'guide', pathMatch: 'full', component: GuideComponent },

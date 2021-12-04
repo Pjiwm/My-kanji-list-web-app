@@ -87,10 +87,11 @@ textarea{
   color: white !important;
 }
 
-input[type="text"]{
+input[type="text"], input[type="password"]{
   background-color:#353a40 !important;
   color: white !important;
   }
+
 
   select {
     background-color:#353a40 !important;
