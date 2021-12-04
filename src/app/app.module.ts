@@ -21,7 +21,9 @@ import { GuideComponent } from './pages/guide/guide.component'
 import { GuideDetailComponent } from './pages/guide.detail/guide.detail.component'
 import { GuideNewComponent } from './pages/guide.new/guide.new.component'
 import { GuideEditComponent } from './pages/guide.edit/guide.edit.component'
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component'
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { RouterModule } from '@angular/router'
     GuideDetailComponent,
     GuideNewComponent,
     GuideEditComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     AppRoutingModule,

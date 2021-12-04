@@ -1,0 +1,32 @@
+<div class="container transparent-field text-center">
+    <div class="container-fluid">
+        <h2 class="header-font py-1 mb-2">Login</h2>
+        <hr>
+        <form #loginForm="ngForm" name="form" (ngSubmit)="loginForm.form.valid && onSubmit()" novalidate>
+
+
+            <label class="header-font float-left mt-3">email:</label>
+            <input [(ngModel)]="userEmail" name="email" #email="ngModel"
+                [ngClass]="{'is-invalid': email.invalid && email.touched}" required minlength="5" type="text"
+                class="form-control mt-1" placeholder="exampl@example.com" aria-label="Example text with button addon"
+                aria-describedby="button-addon1">
+            <div *ngIf="email.invalid && email.touched" class="text-left mx-1 mt-1">
+                <p class="validation-error">Incorrect email address!</p>
+            </div>
+
+            <label class="header-font float-left mt-3">password::</label>
+
+            <input [(ngModel)]="userPassword" name="password" #password="ngModel" type="password"
+                [ngClass]="{'is-invalid': password.invalid && password.touched}" required minlength="8"
+                class="form-control mt-1" placeholder="password" aria-label="Example text with button addon"
+                aria-describedby="button-addon1">
+            <div *ngIf="password.invalid && password.touched" class="text-left mx-1 mt-1">
+                <p class="validation-error">Incorrect password!</p>
+            </div>
+            <hr>
+            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="loginForm.invalid" routerLink="../"
+                (click)="onSubmit()" type="submit">Login</button>
+            <hr>
+        </form>
+    </div>
+</div>
