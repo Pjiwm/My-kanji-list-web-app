@@ -7,14 +7,15 @@ import { User } from '../models/user'
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api/'
+  baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
   constructor(private http: HttpClient, private router: Router) {
 
   }
 
-  register(user: any) {
+  register(user: User) {
+    console.log(user)
     return this.http
-      .post<any>(`${this.baseUrl}/ragister`, user)
+      .post<any>(`${this.baseUrl}/register`, user)
       .subscribe((res) => {
         if (res.token) {
           this.setSession(res)
