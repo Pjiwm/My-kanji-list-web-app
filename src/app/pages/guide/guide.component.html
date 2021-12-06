@@ -1,7 +1,9 @@
 <div class="container transparent-field text-center">
     <h1 class="header-font pt-3">Guides</h1>
     <div class="container-fluid table-responsive">
-        <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" routerLink='./new'>New guide</a>
+        <div *ngIf="isLoggedIn()">
+            <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" routerLink='./new'>New guide</a>
+        </div>
         <table class="table table-dark mb-5">
             <thead>
                 <tr>

@@ -23,7 +23,8 @@ import { GuideNewComponent } from './pages/guide.new/guide.new.component'
 import { GuideEditComponent } from './pages/guide.edit/guide.edit.component'
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component'
+import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { RegisterComponent } from './pages/register/register.component'
     GuideEditComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
   ],
   imports: [
     AppRoutingModule,

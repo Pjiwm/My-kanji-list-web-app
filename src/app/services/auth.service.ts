@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Router } from '@angular/router'
+import { Router, UrlSegment } from '@angular/router'
+import { map, Observable, of } from 'rxjs'
 import { User } from '../models/user'
 
 @Injectable({
@@ -28,23 +29,25 @@ export class AuthService {
 
   login(email: string, password: string) {
     this.http
-    .post<any>(`${this.baseUrl}/login`, {email: email, password: password})
-    .subscribe((res) => {
-      if(res.token) {
-        this.setSession(res)
-        this.router.navigate(['/'])
-      } else {
-        // TODO error handling in auth login
-      }
-    })
+      .post<any>(`${this.baseUrl}/login`, { email: email, password: password })
+      .subscribe((res) => {
+        if (res.token) {
+          this.setSession(res)
+          this.router.navigate(['/'])
+        } else {
+          // TODO error handling in auth login
+        }
+      })
   }
 
   logout() {
-    localStorage.removeItem('id_token')
+    localStorage.removeItem('token')
+    localStorage.removeItem('user_name')
+    localStorage.removeItem('user_id')
   }
 
   isLoggedIn() {
-    return localStorage.getItem('id_token') !== undefined
+    return localStorage.getItem('token') !== null
   }
 
   isLoggedOut() {
@@ -53,7 +56,19 @@ export class AuthService {
 
   private setSession(res: any) {
     localStorage.setItem('token', res.token)
-    localStorage.setItem('user_name', res.token)
+    localStorage.setItem('user_name', res.userName)
     localStorage.setItem('user_id', res._id)
+    localStorage.setItem('user_email', res.email)
+    localStorage.setItem('user_password', res.password)
+  }
+
+  getUser(): Observable<User> {
+    const user: User = {
+      userName: localStorage.getItem('user_name') || "",
+      email: localStorage.getItem('user_email') || "",
+      id: localStorage.getItem('user_id') || "0",
+      password: localStorage.getItem('user_password') || ""
+    }
+    return of(user)
   }
 }
