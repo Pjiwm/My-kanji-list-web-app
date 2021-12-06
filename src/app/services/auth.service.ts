@@ -52,6 +52,8 @@ export class AuthService {
   }
 
   private setSession(res: any) {
-    localStorage.setItem('id_token', res.token)
+    localStorage.setItem('token', res.token)
+    localStorage.setItem('user_name', res.token)
+    localStorage.setItem('user_id', res._id)
   }
 }
