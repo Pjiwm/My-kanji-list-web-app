@@ -25,12 +25,22 @@
                     <a class="nav-link" href="#">Practice resources</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none" type="submit"
-                    routerLink="login">Login</button>
-                <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none" type="submit"
-                    routerLink="register">Register</button>
-            </form>
+            <div *ngIf="!isLoggedIn()">
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none" type="submit"
+                        routerLink="login">Login</button>
+                    <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none" type="submit"
+                        routerLink="register">Register</button>
+                </form>
+            </div>
+            <div *ngIf="isLoggedIn()">
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none" type="submit"
+                        routerLink=".">{{user?.userName}}</button>
+                    <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none" type="submit"
+                        routerLink="register" (click)="onLogout()">logout</button>
+                </form>
+            </div>
         </div>
     </nav>
 </header>
