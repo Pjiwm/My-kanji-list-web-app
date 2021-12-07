@@ -71,4 +71,17 @@ export class AuthService {
     }
     return of(user)
   }
+
+  // TODO getuserbyID
+  // getUserById(id: string): Observable<User> {
+  //   this.http
+  //   .post<any>(`${this.baseUrl}/login`, { email: email, password: password })
+  //   .subscribe((res) => {
+  //     if (res.token) {
+  //       this.setSession(res)
+  //       this.router.navigate(['/'])
+  //     } else {
+  //     }
+  //   })
+  // }
 }
