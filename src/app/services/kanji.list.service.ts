@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
+import { Observable } from 'rxjs'
 import { KanjiList } from '../models/kanji.list'
 
 @Injectable({
@@ -6,7 +9,9 @@ import { KanjiList } from '../models/kanji.list'
 })
 export class KanjiListService {
   kanjiLists: KanjiList[]
-  constructor() {
+  baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
+
+  constructor(private http: HttpClient, private router: Router) {
     this.kanjiLists = [
       {
         id: 1,
@@ -74,7 +79,8 @@ export class KanjiListService {
   }
 
   getById(id?: number) {
-    return this.kanjiLists.find((p) => p.id == id)
+    // return this.kanjiLists.find((p) => p.id == id)
+    return this.http.get<KanjiList>(`${this.baseUrl}/kanjilist/${id}`)
   }
 
   removebyId(id: number) {
@@ -82,8 +88,10 @@ export class KanjiListService {
     this.kanjiLists.splice(index, 1)
   }
 
-  getAll() {
-    return this.kanjiLists
+  getAll(): Observable<KanjiList[]> {
+    // return this.kanjiLists
+    return this.http.get<KanjiList[]>(`${this.baseUrl}/kanjilist`)
+
   }
 
   getNewId() {

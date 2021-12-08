@@ -9,7 +9,7 @@ import { Guide } from '../models/guide'
 })
 export class GuideService {
   private guides: Guide[]
-  basreUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
+  baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
   constructor(private http: HttpClient, private router: Router) {
     this.guides = [
       {
@@ -48,7 +48,6 @@ export class GuideService {
           "\";",
         tags: ['girls', 'reading', 'names'],
         creationDate: new Date("2020-01-16"),
-        kanjiListId: 2
       },
       {
         id: 2,
@@ -62,7 +61,6 @@ export class GuideService {
           "In Japan, name kanji are taught at the junior-high level.[citation needed]",
         tags: ['numbers', '1st grade', 'easy'],
         creationDate: new Date("2020-01-16"),
-        kanjiListId: 5
       },
       {
         id: 3,
@@ -76,7 +74,6 @@ export class GuideService {
           "In Japan, name kanji are taught at the junior-high level.[citation needed]",
         tags: ['names', 'boy', 'guys', 'reading'],
         creationDate: new Date("2020-01-16"),
-        kanjiListId: 4
       },
       {
         id: 4,
@@ -122,7 +119,6 @@ export class GuideService {
           "In the next installment we'll cover menu basics like raw, baked, deep fried, vegetables, etc. and some key restaurant phrases",
         tags: ['food', 'menus', 'restaurant'],
         creationDate: new Date("2020-01-16"),
-        kanjiListId: 3
       },
       {
         id: 5,
@@ -219,18 +215,18 @@ export class GuideService {
 
 
 
-  postItem(item: Guide) {
+  postItem(item: any) {
     this.guides.push(item)
   }
 
-  putItem(item: Guide) {
+  putItem(item: any) {
     const index = this.guides.findIndex((p) => p.id == item.id)
     this.guides[index] = item
   }
 
-  getById(id: number) {
+  getById(id: number): Observable<Guide> {
     // return this.guides.find((p) => p.id == id)
-      return this.http.get<Guide>(`${this.basreUrl}/guide/${id}`)
+      return this.http.get<Guide>(`${this.baseUrl}/guide/${id}`)
   }
 
   removebyId(id: number) {
@@ -240,7 +236,7 @@ export class GuideService {
 
   getAll(): Observable<Guide[]> {
     // return this.guides
-    return this.http.get<Guide[]>(`${this.basreUrl}/guide`)
+    return this.http.get<Guide[]>(`${this.baseUrl}/guide`)
   }
 
   getNewId() {
