@@ -87,9 +87,10 @@ export class KanjiListService {
     return this.http.get<KanjiList>(`${this.baseUrl}/kanjilist/${id}`)
   }
 
-  removebyId(id: number) {
-    const index = this.kanjiLists.findIndex((p) => p.id == id)
-    this.kanjiLists.splice(index, 1)
+  removebyId(id: number): Observable<KanjiList> {
+    // const index = this.kanjiLists.findIndex((p) => p.id == id)
+    // this.kanjiLists.splice(index, 1)
+    return this.http.delete<KanjiList>(`${this.baseUrl}/kanjilist/${id}`)
   }
 
   getAll(): Observable<KanjiList[]> {

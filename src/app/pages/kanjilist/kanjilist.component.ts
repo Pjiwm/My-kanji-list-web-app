@@ -34,7 +34,7 @@ export class KanjilistComponent implements OnInit {
   }
 
   onDelete(id: number): void {
-    this.kanjiListService.removebyId(id)
+    this.kanjiListService.removebyId(id).subscribe((item) => item = item)
   }
 
   isLoggedIn(): Boolean {
