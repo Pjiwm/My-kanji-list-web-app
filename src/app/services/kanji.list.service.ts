@@ -76,12 +76,13 @@ export class KanjiListService {
     return this.http.post<any>(`${this.baseUrl}/kanjilist/`, item)
   }
 
-  putItem(item: KanjiList) {
-    const index = this.kanjiLists.findIndex((p) => p.id == item.id)
-    this.kanjiLists[index] = item
+  putItem(item: KanjiList, id: any): Observable<KanjiList> {
+    // const index = this.kanjiLists.findIndex((p) => p.id == item.id)
+    // this.kanjiLists[index] = item
+    return this.http.put<any>(`${this.baseUrl}/kanjilist/${id}`, item)
   }
 
-  getById(id?: number) {
+  getById(id?: number): Observable<KanjiList> {
     // return this.kanjiLists.find((p) => p.id == id)
     return this.http.get<KanjiList>(`${this.baseUrl}/kanjilist/${id}`)
   }

@@ -33,7 +33,7 @@ export class KanjilistNewComponent implements OnInit {
 
   }
 
-  async onSubmit():  Promise<void> {
+  onSubmit(): void {
     let tagsArray = this.listTags?.split(',')
     let kanjiArray = this.listKanji?.split('')
     let newKanjiList: KanjiList = {
@@ -44,12 +44,12 @@ export class KanjilistNewComponent implements OnInit {
       kanji: kanjiArray,
       creationDate: this.listDate
     }
-    await this.kanjiListService.postItem(newKanjiList).subscribe((item) => newKanjiList = item)
+    this.kanjiListService.postItem(newKanjiList).subscribe((item) => newKanjiList = item)
   }
 
 
   incorrectKanjiValidator(model: NgModel) {
-    if(model.value === null) {
+    if (model.value === null) {
       return false
     }
     const text = model.value

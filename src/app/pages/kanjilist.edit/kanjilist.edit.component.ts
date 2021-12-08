@@ -97,7 +97,8 @@ export class KanjilistEditComponent implements OnInit {
       kanji: kanjiArray,
       creationDate: this.listDate
     }
-    this.kanjiListService.putItem(newKanjiList)
+    // this.kanjiListService.putItem(newKanjiList)
+    this.kanjiListService.putItem(newKanjiList, this.id).subscribe((item) => newKanjiList = item)
   }
 
   incorrectKanjiValidator(model: NgModel) {
