@@ -97,6 +97,7 @@ export class GuideEditComponent implements OnInit {
         kanjiListId: this.kanjiList?.id
       }
     }
-    this.guideService.putItem(newGuide)
+    // this.guideService.putItem(newGuide)
+    this.guideService.putItem(newGuide, this.id).subscribe((item) => newGuide = item)
   }
 }

@@ -49,12 +49,13 @@ export class GuideNewComponent implements OnInit {
       // kanjiListId: this.kanjiListId
     }
 
-    if(this.kanjiListId !== undefined) {
-      newGuide = {...newGuide, kanjiList: this.kanjiListId}
+    if (this.kanjiListId !== undefined) {
+      newGuide = { ...newGuide, kanjiList: this.kanjiListId }
     }
 
 
-    this.guideService.postItem(newGuide)
+    // this.guideService.postItem(newGuide)
+    this.guideService.postItem(newGuide).subscribe((item) => newGuide = item)
   }
 
 }
