@@ -72,6 +72,18 @@ export class AuthService {
     return of(user)
   }
 
+  public getToken(): string {
+    return localStorage.getItem('token') || "";
+  }
+
+  public isAuthenticated(): boolean {
+    // get the token
+    const token = this.getToken();
+    // return a boolean reflecting 
+    // whether or not the token is expired
+    return token.length > 1;
+  }
+
   // TODO getuserbyID
   // getUserById(id: string): Observable<User> {
   //   this.http

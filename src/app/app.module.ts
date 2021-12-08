@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 
 
@@ -21,10 +21,11 @@ import { GuideComponent } from './pages/guide/guide.component'
 import { GuideDetailComponent } from './pages/guide.detail/guide.detail.component'
 import { GuideNewComponent } from './pages/guide.new/guide.new.component'
 import { GuideEditComponent } from './pages/guide.edit/guide.edit.component'
-import { RouterModule } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { RouterModule } from '@angular/router'
+import { LoginComponent } from './pages/login/login.component'
+import { RegisterComponent } from './pages/register/register.component'
 import { ProfileComponent } from './pages/profile/profile.component'
+import { TokenInterceptor } from './services/TokenIncreptor'
 
 @NgModule({
   declarations: [
@@ -54,8 +55,15 @@ import { ProfileComponent } from './pages/profile/profile.component'
     NgbModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA,
+  ]
 })
 export class AppModule { }

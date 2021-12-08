@@ -33,7 +33,7 @@ export class KanjilistNewComponent implements OnInit {
 
   }
 
-  onSubmit(): void {
+  async onSubmit():  Promise<void> {
     let tagsArray = this.listTags?.split(',')
     let kanjiArray = this.listKanji?.split('')
     let newKanjiList: KanjiList = {
@@ -44,8 +44,7 @@ export class KanjilistNewComponent implements OnInit {
       kanji: kanjiArray,
       creationDate: this.listDate
     }
-    this.kanjiListService.postItem(newKanjiList)
-    console.log('added kanji list')
+    await this.kanjiListService.postItem(newKanjiList).subscribe((item) => newKanjiList = item)
   }
 
 

@@ -10,6 +10,9 @@ import { KanjiList } from '../models/kanji.list'
 export class KanjiListService {
   kanjiLists: KanjiList[]
   baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
+  httpOptions: any = {
+    'Content-Type': 'application/json',
+  }
 
   constructor(private http: HttpClient, private router: Router) {
     this.kanjiLists = [
@@ -69,8 +72,8 @@ export class KanjiListService {
 
 
 
-  postItem(item: KanjiList) {
-    this.kanjiLists.push(item)
+  postItem(item: KanjiList):Observable<KanjiList> {
+    return this.http.post<any>(`${this.baseUrl}/kanjilist/`, item)
   }
 
   putItem(item: KanjiList) {
