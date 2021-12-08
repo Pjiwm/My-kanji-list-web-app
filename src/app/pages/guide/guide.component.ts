@@ -14,6 +14,7 @@ export class GuideComponent implements OnInit {
   guideList: Guide[] | undefined
   user: User | undefined
   loggedInUser$: Observable<User>
+  guideList$: Observable<Guide[]>
   private guideService: GuideService
   private authService: AuthService
 
@@ -21,13 +22,15 @@ export class GuideComponent implements OnInit {
     this.guideService = guideService
     this.authService = authService
     this.loggedInUser$ = this.authService.getUser()
+    this.guideList$ = this.guideService.getAll()
+    this.guideList = []
   }
 
   ngOnInit(): void {
-    this.guideList = this.guideService.getAll()
-    if (this.authService.isLoggedIn()) {
-      this.loggedInUser$ = this.authService.getUser()
-    }
+    // this.guideList = this.guideService.getAll()
+    this.guideService.getAll().subscribe((guides) => {
+      this.guideList = guides
+    })
 
   }
 

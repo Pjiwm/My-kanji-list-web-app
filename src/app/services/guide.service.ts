@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
+import { Observable } from 'rxjs'
 import { Guide } from '../models/guide'
 
 @Injectable({
@@ -6,7 +9,8 @@ import { Guide } from '../models/guide'
 })
 export class GuideService {
   private guides: Guide[]
-  constructor() {
+  basreUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
+  constructor(private http: HttpClient, private router: Router) {
     this.guides = [
       {
         id: 1,
@@ -225,7 +229,8 @@ export class GuideService {
   }
 
   getById(id: number) {
-    return this.guides.find((p) => p.id == id)
+    // return this.guides.find((p) => p.id == id)
+      return this.http.get<Guide>(`${this.basreUrl}/guide/${id}`)
   }
 
   removebyId(id: number) {
@@ -233,8 +238,9 @@ export class GuideService {
     this.guides.splice(index, 1)
   }
 
-  getAll() {
-    return this.guides
+  getAll(): Observable<Guide[]> {
+    // return this.guides
+    return this.http.get<Guide[]>(`${this.basreUrl}/guide`)
   }
 
   getNewId() {

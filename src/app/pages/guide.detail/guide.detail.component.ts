@@ -29,8 +29,11 @@ export class GuideDetailComponent implements OnInit {
     this.route.paramMap.subscribe(param => {
       this.id = <number><unknown>param.get('id')
     })
-
-      this.guide = this.guideService.getById(this.id)
+      this.guideService.getById(this.id).subscribe((guide) => {
+        this.guide = guide
+      })
+      // this.guide = this.guideService.getById(this.id)
       this.kanjiList = this.kanjiListService.getById(this.guide?.kanjiListId)
+      console.log(this.guide)
   }
 }

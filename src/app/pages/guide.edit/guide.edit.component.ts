@@ -39,7 +39,13 @@ export class GuideEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       this.id = <number><unknown>param.get('id')
-      this.guide = this.guideService.getById(this.id)
+       this.guideService.getById(this.id).subscribe((guide) => {
+        this.guide = guide
+        this.guideTitle = guide.title
+        this.guideContent = guide.content
+        this.creationDate = guide.creationDate
+        this.guideTags = this.tagArrayToString(guide.tags)
+       })
 
       if (this.guide !== undefined) {
         this.guideTags = this.tagArrayToString(this.guide.tags)
