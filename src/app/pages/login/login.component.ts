@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 import { AuthService } from 'src/app/services/auth.service'
+import { ErrorService } from 'src/app/services/error.service'
 
 @Component({
   selector: 'app-login',
@@ -9,16 +11,22 @@ import { AuthService } from 'src/app/services/auth.service'
 export class LoginComponent implements OnInit {
   userEmail: string
   userPassword: string
-  constructor(private authService: AuthService) {
+  errorService: ErrorService
+  successfulLogin: Boolean
+  constructor(private authService: AuthService, errorService: ErrorService) {
     this.userEmail = ""
     this.userPassword = ""
+    this.errorService = errorService
+    this.successfulLogin = true
   }
 
   ngOnInit(): void {
+    this.errorService.setDefault()
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     this.authService.login(this.userEmail, this.userPassword)
+    this.successfulLogin = false
   }
 
 }

@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core'
 import { Router, UrlSegment } from '@angular/router'
 import { map, Observable, of } from 'rxjs'
 import { User } from '../models/user'
+import { ErrorService } from './error.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private errorService: ErrorService) {
 
   }
 
@@ -19,10 +20,11 @@ export class AuthService {
       .subscribe((res) => {
         if (res.token) {
           this.setSession(res)
-          this.router.navigate(['/'])
-        } else {
-          //  TODO error handling in auth register
+          this.router.navigate(['../'])
         }
+      }, (err) => {
+        this.errorService.errorMessage = err.error.error
+        this.errorService.showError = true
       })
   }
 
@@ -32,11 +34,13 @@ export class AuthService {
       .subscribe((res) => {
         if (res.token) {
           this.setSession(res)
-          this.router.navigate(['/'])
-        } else {
-          // TODO error handling in auth login
+          this.router.navigate(['../'])
         }
+      }, (err) => {
+        this.errorService.errorMessage = err.error.error
+        this.errorService.showError = true
       })
+
   }
 
   logout() {
@@ -72,11 +76,11 @@ export class AuthService {
   }
 
   public getToken(): string {
-    return localStorage.getItem('token') || "";
+    return localStorage.getItem('token') || ""
   }
 
   public isAuthenticated(): boolean {
-    const token = this.getToken();
-    return token.length > 1;
+    const token = this.getToken()
+    return token.length > 1
   }
 }

@@ -40,7 +40,6 @@ export class KanjilistEditComponent implements OnInit {
       this.id = <number><unknown>param.get('id')
     })
 
-    // this.kanjiList = this.kanjiListService.getById(this.id)
     this.kanjiListService.getById(this.id).subscribe((kanjiList) => {
       this.kanjiList = kanjiList
       if (this.kanjiList !== undefined) {
@@ -96,7 +95,6 @@ export class KanjilistEditComponent implements OnInit {
       kanji: kanjiArray,
       creationDate: this.listDate
     }
-    // this.kanjiListService.putItem(newKanjiList)
     this.kanjiListService.putItem(newKanjiList, this.id).subscribe((item) => newKanjiList = item)
   }
 
