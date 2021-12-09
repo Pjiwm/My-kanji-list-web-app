@@ -32,10 +32,6 @@ export class PracticeresourceComponent implements OnInit {
     })
   }
 
-  onDelete(id: number): void {
-    this.practiceResourceService.removebyId(id).subscribe((item) => item = item)
-  }
-
   isLoggedIn(): Boolean {
     const isLoggedIn = this.authService.isLoggedIn()
     if (isLoggedIn) {

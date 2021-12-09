@@ -26,15 +26,10 @@ export class KanjilistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.kanjiLists = this.kanjiListService.getAll()
     this.kanjiListService.getAll().subscribe((kanjilists) =>
     {
       this.kanjiLists = kanjilists
     })
-  }
-
-  onDelete(id: number): void {
-    this.kanjiListService.removebyId(id).subscribe((item) => item = item)
   }
 
   isLoggedIn(): Boolean {
