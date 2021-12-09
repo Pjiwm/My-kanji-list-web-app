@@ -11,7 +11,7 @@ import { KanjiListService } from 'src/app/services/kanji.list.service'
   styleUrls: ['./kanjilist.component.css']
 })
 export class KanjilistComponent implements OnInit {
-  kanjiLists: KanjiList[] | undefined
+  kanjiLists: KanjiList[]
   private kanjiListService: KanjiListService
   private authService: AuthService
   user: User | undefined
