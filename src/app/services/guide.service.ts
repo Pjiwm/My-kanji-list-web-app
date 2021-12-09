@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs'
 import { Guide } from '../models/guide'
 
 @Injectable({
@@ -6,7 +8,8 @@ import { Guide } from '../models/guide'
 })
 export class GuideService {
   private guides: Guide[]
-  constructor() {
+  baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
+  constructor(private http: HttpClient) {
     this.guides = [
       {
         id: 1,
@@ -44,7 +47,6 @@ export class GuideService {
           "\";",
         tags: ['girls', 'reading', 'names'],
         creationDate: new Date("2020-01-16"),
-        kanjiListId: 2
       },
       {
         id: 2,
@@ -58,7 +60,6 @@ export class GuideService {
           "In Japan, name kanji are taught at the junior-high level.[citation needed]",
         tags: ['numbers', '1st grade', 'easy'],
         creationDate: new Date("2020-01-16"),
-        kanjiListId: 5
       },
       {
         id: 3,
@@ -72,7 +73,6 @@ export class GuideService {
           "In Japan, name kanji are taught at the junior-high level.[citation needed]",
         tags: ['names', 'boy', 'guys', 'reading'],
         creationDate: new Date("2020-01-16"),
-        kanjiListId: 4
       },
       {
         id: 4,
@@ -118,7 +118,6 @@ export class GuideService {
           "In the next installment we'll cover menu basics like raw, baked, deep fried, vegetables, etc. and some key restaurant phrases",
         tags: ['food', 'menus', 'restaurant'],
         creationDate: new Date("2020-01-16"),
-        kanjiListId: 3
       },
       {
         id: 5,
@@ -215,26 +214,25 @@ export class GuideService {
 
 
 
-  postItem(item: Guide) {
-    this.guides.push(item)
+  postItem(item: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/guide/`, item)
   }
 
-  putItem(item: Guide) {
-    const index = this.guides.findIndex((p) => p.id == item.id)
-    this.guides[index] = item
+
+  putItem(item: any, id: any): Observable<Guide> {
+    return this.http.put<any>(`${this.baseUrl}/guide/${id}`, item)
   }
 
-  getById(id: number) {
-    return this.guides.find((p) => p.id == id)
+  getById(id: number): Observable<Guide> {
+    return this.http.get<Guide>(`${this.baseUrl}/guide/${id}`)
   }
 
-  removebyId(id: number) {
-    const index = this.guides.findIndex((p) => p.id == id)
-    this.guides.splice(index, 1)
+  removebyId(id: any) {
+    return this.http.delete(`${this.baseUrl}/guide/${id}`)
   }
 
-  getAll() {
-    return this.guides
+  getAll(): Observable<Guide[]> {
+    return this.http.get<Guide[]>(`${this.baseUrl}/guide`)
   }
 
   getNewId() {

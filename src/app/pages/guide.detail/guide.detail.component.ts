@@ -22,15 +22,16 @@ export class GuideDetailComponent implements OnInit {
     this.guideService = guideService
     this.id = 0
     this.kanjiListService = kanjiListService
-    
+
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       this.id = <number><unknown>param.get('id')
     })
-
-      this.guide = this.guideService.getById(this.id)
-      this.kanjiList = this.kanjiListService.getById(this.guide?.kanjiListId)
+    this.guideService.getById(this.id).subscribe((guide) => {
+      this.guide = guide
+      this.kanjiList = guide.kanjilist
+    })
   }
 }

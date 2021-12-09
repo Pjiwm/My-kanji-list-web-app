@@ -22,7 +22,7 @@
                     <a class="nav-link" routerLink="guide">Guides</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Practice resources</a>
+                    <a class="nav-link" routerLink="practiceresource">Practice resources</a>
                 </li>
             </ul>
             <div *ngIf="!isLoggedIn()">
@@ -35,10 +35,10 @@
             </div>
             <div *ngIf="isLoggedIn()">
                 <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none"
+                        type="submit">{{user?.userName}}</button>
                     <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none" type="submit"
-                        routerLink=".">{{user?.userName}}</button>
-                    <button class="btn btn-primary my-2 my-sm-0 mx-2 shadow-none" type="submit"
-                        routerLink="register" (click)="onLogout()">logout</button>
+                        (click)="onLogout()">logout</button>
                 </form>
             </div>
         </div>

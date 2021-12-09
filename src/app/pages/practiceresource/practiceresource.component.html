@@ -1,38 +1,32 @@
 <div class="container transparent-field text-center">
-    <h1 class="header-font pt-3">Kanji Lists</h1>
+    <h1 class="header-font pt-3">Practice resources</h1>
     <div class="container-fluid table-responsive">
         <div *ngIf="isLoggedIn()">
-            <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" routerLink='./new'>New list</a>
+            <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" routerLink='./new'>New practice
+                resoure</a>
         </div>
         <table class="table table-dark mb-5">
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Kanji</th>
-                    <th scope="col">Tags</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Required skills</th>
                     <th scope="col">Date</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
             <tbody>
-                <tr *ngFor="let kanjiList of kanjiLists">
-                    <td>{{kanjiList.name}}</td>
-                    <td>{{kanjiList.description}}</td>
-                    <td><span *ngFor="let kanji of kanjiList.kanji; let i = index">
-                            <span *ngIf="i < 5">{{kanji + " "}}</span>
-                            <span *ngIf="i == kanjiList.kanji.length -1 && kanjiList.kanji.length > 5">...</span>
-                        </span></td>
-                    <td><span *ngFor="let tag of kanjiList.tags; let i=index">
-                            <span *ngIf="i < kanjiList.tags.length-1">{{tag + ", "}}</span>
-                            <span *ngIf="i == kanjiList.tags.length-1">{{tag}}</span>
-                        </span></td>
-                    <td>{{kanjiList.creationDate | date}}</td>
+                <tr *ngFor="let resource of practiceResources">
+                    <td>{{resource.title}}</td>
+                    <td><span *ngFor="let skill of resource.requiredSkills; let i=index">
+                        <span *ngIf="i < resource.requiredSkills.length-1">{{skill + ", "}}</span>
+                        <span *ngIf="i == resource.requiredSkills.length-1">{{skill}}</span>
+                    </span></td>
+                    <td>{{resource.creationDate | date}}</td>
                     <!-- buttons -->
-                    <td><a class="btn btn-primary shadow-none" [routerLink]="['./', kanjiList.id]">more</a></td>
+                    <td><a class="btn btn-primary shadow-none" [routerLink]="['./', resource.id]">more</a></td>
                     <!-- delete -->
-                    <td> <a (click)='onDelete(kanjiList.id)' class="btn btn-primary shadow-none"><svg
+                    <td> <a (click)='onDelete(resource.id)' class="btn btn-primary shadow-none"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-trash" viewBox="0 0 16 16">
                                 <path
@@ -43,7 +37,7 @@
                         </a>
                     </td>
                     <!-- edit -->
-                    <td><a class="btn btn-primary shadow-none" [routerLink]="['./edit/', kanjiList.id]"><svg
+                    <td><a class="btn btn-primary shadow-none" [routerLink]="['./edit/', resource.id]"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil" viewBox="0 0 16 16">
                                 <path

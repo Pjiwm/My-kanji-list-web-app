@@ -1,0 +1,62 @@
+<div class="container transparent-field text-center">
+    <div class="container-fluid">
+
+        <form #kanjiListForm="ngForm" name="form" (ngSubmit)="kanjiListForm.form.valid && onSubmit()" novalidate>
+
+            <label class="header-font float-left mt-4">Title:</label>
+            <!-- form title -->
+            <input [(ngModel)]="resourceTitle" name="title" #title="ngModel"
+                [ngClass]="{'is-invalid': title.invalid && title.touched}" required minlength="5" type="text"
+                class="form-control mt-1" placeholder="write a name..." aria-label="Example text with button addon"
+                aria-describedby="button-addon1">
+            <div *ngIf="title.invalid && title.touched" class="text-left mx-1 mt-1">
+                <p class="validation-error">Title is a required field. Give your resource a name of at least 5
+                    characters
+                    long!</p>
+            </div>
+
+            <label class="header-font float-left mt-3">Content:</label>
+            <div class="input-group">
+                <!-- form content -->
+                <textarea [(ngModel)]="resourceContent" name="content" #content="ngModel"
+                    [ngClass]="{'is-invalid': content.invalid && content.touched}" required class="form-control mt-1"
+                    rows="8" aria-label="With textarea" minlength="50"
+                    placeholder="(e.g) A newspaper article"></textarea>
+            </div>
+            <div *ngIf="content.invalid && content.touched" class="text-left mx-1 mt-1">
+                <p class="validation-error">Content is a required field. The minimum is 50 characters!</p>
+            </div>
+
+            <label class="header-font float-left mt-4">Required skills:</label>
+            <!-- form required skills -->
+            <input [(ngModel)]="resourceSkills" name="skills" #skills="ngModel"
+                [ngClass]="{'is-invalid': skills.invalid && skills.touched}" required type="text"
+                class="form-control mt-1" minlength="1"
+                placeholder="seperate by comma (e.g): JLPT, N5, N4, n3, jlpt N5, none"
+                aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <div *ngIf="skills.invalid && skills.touched" class="text-left mx-1 mt-1">
+                <p class="validation-error">required skills are a required field. Add at least 1 skill of 1 character
+                    long!</p>
+            </div>
+
+            <label class="header-font float-left mt-3">Estimated reading time:</label>
+            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref"
+                [(ngModel)]="resourceEstimatedReadingTime" name="readingTime" #readingTime="ngModel">
+                <option selected value="10">10 minutes</option>
+                <option value="20">20 minutes</option>
+                <option value="30">30 minutes</option>
+                <option value="45">45 minutes</option>
+                <option value="60">60 minutes</option>
+                <option value="90">90 minutes</option>
+                <option value="60">120 minutes</option>
+
+
+            </select>
+
+            <hr>
+            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="kanjiListForm.invalid " routerLink="../../"
+                (click)="onSubmit()" type="submit">Submit</button>
+            <hr>
+        </form>
+    </div>
+</div>

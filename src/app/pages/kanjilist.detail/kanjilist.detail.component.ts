@@ -26,20 +26,23 @@ export class KanjilistDetailComponent implements OnInit {
     this.route.paramMap.subscribe(param => {
       this.id = <number><unknown>param.get('id')
     })
+    this.kanjiListService.getById(this.id).subscribe((kanjiList) => {
+      this.kanjiList = kanjiList
 
-    this.kanjiList = this.kanjiListService.getById(this.id)
-    if (this.kanjiList !== undefined) {
-      this.kanjiList.kanji.forEach((kanji) => {
-        const details = Kanji.getDetails(kanji)
-        this.kanjiDetails.push({
-          meanings: details.meanings.join(', '),
-          literal: details.literal,
-          onyomi: details.onyomi.join(', '),
-          kunyomi: details.kunyomi.join(', '),
-          strokeCount: details.stroke_count
+      if (this.kanjiList !== undefined) {
+        this.kanjiList.kanji.forEach((kanji) => {
+          const details = Kanji.getDetails(kanji)
+          this.kanjiDetails.push({
+            meanings: details.meanings.join(', '),
+            literal: details.literal,
+            onyomi: details.onyomi.join(', '),
+            kunyomi: details.kunyomi.join(', '),
+            strokeCount: details.stroke_count
+          })
         })
-      })
-    }
-    console.log(this.kanjiDetails)
+      }
+    })
+
+
   }
 }

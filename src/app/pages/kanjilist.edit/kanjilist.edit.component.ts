@@ -27,7 +27,6 @@ export class KanjilistEditComponent implements OnInit {
     this.route = route
     this.kanjiListService = kanjiListService
     this.id = 0
-
     this.listDescription = ""
     this.listName = ""
     this.listTags = ""
@@ -41,14 +40,18 @@ export class KanjilistEditComponent implements OnInit {
       this.id = <number><unknown>param.get('id')
     })
 
-    this.kanjiList = this.kanjiListService.getById(this.id)
-    if (this.kanjiList !== undefined) {
-      this.listTags = this.tagArrayToString(this.kanjiList.tags)
-      this.listKanji = this.kanjiArrayToString(this.kanjiList.kanji)
-      this.listDate = this.kanjiList.creationDate
-      this.listDescription = this.kanjiList.description
-      this.listName = this.kanjiList.name
-    }
+    // this.kanjiList = this.kanjiListService.getById(this.id)
+    this.kanjiListService.getById(this.id).subscribe((kanjiList) => {
+      this.kanjiList = kanjiList
+      if (this.kanjiList !== undefined) {
+        this.listTags = this.tagArrayToString(this.kanjiList.tags)
+        this.listKanji = this.kanjiArrayToString(this.kanjiList.kanji)
+        this.listDate = this.kanjiList.creationDate
+        this.listDescription = this.kanjiList.description
+        this.listName = this.kanjiList.name
+      }
+    })
+
   }
   /**
    * We want to get the tags array as a string so it can be displayed in a form field.
@@ -63,7 +66,6 @@ export class KanjilistEditComponent implements OnInit {
       if (i !== tags.length - 1) {
         returnString += ", "
       }
-      console.log(i + ' ' + returnString)
     }
     return returnString
   }
@@ -94,11 +96,12 @@ export class KanjilistEditComponent implements OnInit {
       kanji: kanjiArray,
       creationDate: this.listDate
     }
-    this.kanjiListService.putItem(newKanjiList)
+    // this.kanjiListService.putItem(newKanjiList)
+    this.kanjiListService.putItem(newKanjiList, this.id).subscribe((item) => newKanjiList = item)
   }
 
   incorrectKanjiValidator(model: NgModel) {
-    if(model.value === null) {
+    if (model.value === null) {
       return false
     }
     const text = model.value

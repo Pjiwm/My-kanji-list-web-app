@@ -17,7 +17,7 @@ export class GuideNewComponent implements OnInit {
   guideTags: string
   creationDate: Date
   guideId: number
-  kanjiListId?: number
+  kanjiListId?: string
   kanjiLists: KanjiList[]
 
   constructor(guideService: GuideService, kanjiListService: KanjiListService) {
@@ -28,24 +28,37 @@ export class GuideNewComponent implements OnInit {
     this.guideTags = ""
     this.guideId = this.guideService.getNewId()
     this.creationDate = new Date()
-    this.kanjiLists = kanjiListService.getAll()
+    // this.kanjiLists = kanjiListService.getAll()
+    this.kanjiLists = []
   }
 
   ngOnInit(): void {
-
+    this.kanjiListService.getAll().subscribe((kanjilists) => {
+      this.kanjiLists = kanjilists
+    })
   }
 
   onSubmit(): void {
     let tagsArray = this.guideTags?.split(',')
-    let newGuide: Guide = {
+    let newGuide: any = {
       id: this.guideId,
       title: this.guideTitle,
       content: this.guideContent,
       tags: tagsArray,
       creationDate: this.creationDate,
-      kanjiListId: this.kanjiListId
     }
-    this.guideService.postItem(newGuide)
+    if (this.kanjiListId !== undefined) {
+      newGuide.kanjilist = this.kanjiListId
+    }
+
+    // this.guideService.postItem(newGuide)
+    this.guideService.postItem(newGuide).subscribe((item) => {
+      newGuide = item
+      if (this.kanjiListId !== undefined) {
+        newGuide.kanjilist = this.kanjiListId
+      }
+    }
+    )
   }
 
 }

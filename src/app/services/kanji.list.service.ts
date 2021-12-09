@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs'
 import { KanjiList } from '../models/kanji.list'
 
 @Injectable({
@@ -6,7 +8,12 @@ import { KanjiList } from '../models/kanji.list'
 })
 export class KanjiListService {
   kanjiLists: KanjiList[]
-  constructor() {
+  baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
+  httpOptions: any = {
+    'Content-Type': 'application/json',
+  }
+
+  constructor(private http: HttpClient) {
     this.kanjiLists = [
       {
         id: 1,
@@ -64,26 +71,25 @@ export class KanjiListService {
 
 
 
-  postItem(item: KanjiList) {
-    this.kanjiLists.push(item)
+  postItem(item: KanjiList):Observable<KanjiList> {
+    return this.http.post<any>(`${this.baseUrl}/kanjilist/`, item)
   }
 
-  putItem(item: KanjiList) {
-    const index = this.kanjiLists.findIndex((p) => p.id == item.id)
-    this.kanjiLists[index] = item
+  putItem(item: KanjiList, id: any): Observable<KanjiList> {
+    return this.http.put<any>(`${this.baseUrl}/kanjilist/${id}`, item)
   }
 
-  getById(id?: number) {
-    return this.kanjiLists.find((p) => p.id == id)
+  getById(id?: number): Observable<KanjiList> {
+    return this.http.get<KanjiList>(`${this.baseUrl}/kanjilist/${id}`)
   }
 
-  removebyId(id: number) {
-    const index = this.kanjiLists.findIndex((p) => p.id == id)
-    this.kanjiLists.splice(index, 1)
+  removebyId(id: number): Observable<KanjiList> {
+    return this.http.delete<KanjiList>(`${this.baseUrl}/kanjilist/${id}`)
   }
 
-  getAll() {
-    return this.kanjiLists
+  getAll(): Observable<KanjiList[]> {
+    return this.http.get<KanjiList[]>(`${this.baseUrl}/kanjilist`)
+
   }
 
   getNewId() {

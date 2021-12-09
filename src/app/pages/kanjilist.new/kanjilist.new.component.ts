@@ -44,13 +44,12 @@ export class KanjilistNewComponent implements OnInit {
       kanji: kanjiArray,
       creationDate: this.listDate
     }
-    this.kanjiListService.postItem(newKanjiList)
-    console.log('added kanji list')
+    this.kanjiListService.postItem(newKanjiList).subscribe((item) => newKanjiList = item)
   }
 
 
   incorrectKanjiValidator(model: NgModel) {
-    if(model.value === null) {
+    if (model.value === null) {
       return false
     }
     const text = model.value

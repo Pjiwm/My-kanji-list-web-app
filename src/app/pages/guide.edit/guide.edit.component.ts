@@ -20,8 +20,9 @@ export class GuideEditComponent implements OnInit {
   guideContent: string
   guideTags: string
   creationDate: Date
-  kanjiLists: KanjiList[]
-  kanjiListId?: number
+  kanjiLists: KanjiList[] | undefined
+  kanjiList: KanjiList | undefined
+  kanjiListId?: string
 
   private guideService: GuideService
   constructor(route: ActivatedRoute, guideService: GuideService, kanjiListService: KanjiListService) {
@@ -33,13 +34,24 @@ export class GuideEditComponent implements OnInit {
     this.creationDate = new Date
     this.guideTags = ""
     this.kanjiListService = kanjiListService
-    this.kanjiLists = kanjiListService.getAll()
+    this.kanjiLists = []
+    // this.kanjiLists = kanjiListService.getAll()
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       this.id = <number><unknown>param.get('id')
-      this.guide = this.guideService.getById(this.id)
+      this.guideService.getById(this.id).subscribe((guide) => {
+        this.guide = guide
+        this.guideTitle = guide.title
+        this.guideContent = guide.content
+        this.creationDate = guide.creationDate
+        this.guideTags = this.tagArrayToString(guide.tags)
+        this.kanjiList = guide.kanjilist
+      })
+      this.kanjiListService.getAll().subscribe((kanjilists) => {
+        this.kanjiLists = kanjilists
+      })
 
       if (this.guide !== undefined) {
         this.guideTags = this.tagArrayToString(this.guide.tags)
@@ -63,7 +75,6 @@ export class GuideEditComponent implements OnInit {
       if (i !== tags.length - 1) {
         returnString += ", "
       }
-      console.log(i + ' ' + returnString)
     }
     return returnString
   }
@@ -71,14 +82,24 @@ export class GuideEditComponent implements OnInit {
   onSubmit(): void {
     let tagsArray = this.guideTags?.split(',')
 
-    let newGuide: Guide = {
+    let newGuide: any = {
       id: this.id,
       title: this.guideTitle,
       content: this.guideContent,
       tags: tagsArray,
       creationDate: this.creationDate,
-      kanjiListId: this.kanjiListId
+
+
     }
-    this.guideService.putItem(newGuide)
+    if (this.kanjiListId !== undefined) {
+        newGuide.kanjilist = this.kanjiListId
+    }
+    // this.guideService.putItem(newGuide)
+    this.guideService.putItem(newGuide, this.id).subscribe((item) => {newGuide = item
+      if (this.kanjiListId !== undefined) {
+        newGuide.kanjilist = this.kanjiListId
+      }
+      console.log(newGuide.kanjilist)
+    })
   }
 }
