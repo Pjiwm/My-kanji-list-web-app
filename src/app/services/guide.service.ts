@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Router } from '@angular/router'
 import { Observable } from 'rxjs'
 import { Guide } from '../models/guide'
 
@@ -10,7 +9,7 @@ import { Guide } from '../models/guide'
 export class GuideService {
   private guides: Guide[]
   baseUrl: string = 'https://mykanjilist-backend.herokuapp.com/api'
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
     this.guides = [
       {
         id: 1,
