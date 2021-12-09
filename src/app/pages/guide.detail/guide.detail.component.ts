@@ -33,9 +33,5 @@ export class GuideDetailComponent implements OnInit {
       this.guide = guide
       this.kanjiList = guide.kanjilist
     })
-    // this.guide = this.guideService.getById(this.id)
-    // this.kanjiListService.getById(this.guide?.kanjiListId).subscribe((kanjilist) => {
-    //   this.kanjiList = kanjilist
-    // })
   }
 }

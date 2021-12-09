@@ -16,17 +16,17 @@
                     <th scope="col"></th>
                 </tr>
             <tbody>
-                <tr *ngFor="let resoure of practiceResources">
-                    <td>{{resoure.title}}</td>
-                    <td><span *ngFor="let skill of resoure.requiredSkills; let i=index">
-                        <span *ngIf="i < resoure.requiredSkills.length-1">{{skill + ", "}}</span>
-                        <span *ngIf="i == resoure.requiredSkills.length-1">{{skill}}</span>
+                <tr *ngFor="let resource of practiceResources">
+                    <td>{{resource.title}}</td>
+                    <td><span *ngFor="let skill of resource.requiredSkills; let i=index">
+                        <span *ngIf="i < resource.requiredSkills.length-1">{{skill + ", "}}</span>
+                        <span *ngIf="i == resource.requiredSkills.length-1">{{skill}}</span>
                     </span></td>
-                    <td>{{resoure.creationDate | date}}</td>
+                    <td>{{resource.creationDate | date}}</td>
                     <!-- buttons -->
-                    <td><a class="btn btn-primary shadow-none" [routerLink]="['./', resoure.id]">more</a></td>
+                    <td><a class="btn btn-primary shadow-none" [routerLink]="['./', resource.id]">more</a></td>
                     <!-- delete -->
-                    <td> <a (click)='onDelete(resoure.id)' class="btn btn-primary shadow-none"><svg
+                    <td> <a (click)='onDelete(resource.id)' class="btn btn-primary shadow-none"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-trash" viewBox="0 0 16 16">
                                 <path
@@ -37,7 +37,7 @@
                         </a>
                     </td>
                     <!-- edit -->
-                    <td><a class="btn btn-primary shadow-none" [routerLink]="['./edit/', resoure.id]"><svg
+                    <td><a class="btn btn-primary shadow-none" [routerLink]="['./edit/', resource.id]"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil" viewBox="0 0 16 16">
                                 <path

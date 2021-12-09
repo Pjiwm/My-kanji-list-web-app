@@ -29,7 +29,6 @@ export class PracticeresourceComponent implements OnInit {
     this.practiceResourceService.getAll().subscribe((resources) =>
     {
       this.practiceResources = resources
-      console.log(this.practiceResources[0].requiredSkills)
     })
   }
 

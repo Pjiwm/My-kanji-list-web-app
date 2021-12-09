@@ -26,7 +26,8 @@ import { LoginComponent } from './pages/login/login.component'
 import { RegisterComponent } from './pages/register/register.component'
 import { ProfileComponent } from './pages/profile/profile.component'
 import { TokenInterceptor } from './services/TokenIncreptor';
-import { PracticeresourceComponent } from './pages/practiceresource/practiceresource.component'
+import { PracticeresourceComponent } from './pages/practiceresource/practiceresource.component';
+import { PracticeresourceDetailComponent } from './pages/practiceresource.detail/practiceresource.detail.component'
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { PracticeresourceComponent } from './pages/practiceresource/practicereso
     RegisterComponent,
     ProfileComponent,
     PracticeresourceComponent,
+    PracticeresourceDetailComponent,
   ],
   imports: [
     AppRoutingModule,
