@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'
+import { PracticeResource } from '../models/practice.resource'
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,10 @@ export class PracticeresourceService {
 
   removebyId(id: any) {
     return this.http.delete(`${this.baseUrl}/practiceresource/${id}`)
+  }
+
+  getFromUser(id: any): Observable<PracticeResource[]> {
+    return this.http.get<PracticeResource[]>(`${this.baseUrl}/practiceresource/user/${id}`)
   }
 
   getAll(): Observable<any[]> {

@@ -89,7 +89,10 @@ export class KanjiListService {
 
   getAll(): Observable<KanjiList[]> {
     return this.http.get<KanjiList[]>(`${this.baseUrl}/kanjilist`)
+  }
 
+  getFromUser(id: any): Observable<KanjiList[]> {
+    return this.http.get<KanjiList[]>(`${this.baseUrl}/kanjilist/user/${id}`)
   }
 
   getNewId() {
