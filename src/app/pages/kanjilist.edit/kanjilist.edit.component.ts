@@ -66,7 +66,6 @@ export class KanjilistEditComponent implements OnInit {
       if (i !== tags.length - 1) {
         returnString += ", "
       }
-      console.log(i + ' ' + returnString)
     }
     return returnString
   }

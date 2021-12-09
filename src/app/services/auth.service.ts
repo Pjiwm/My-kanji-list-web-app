@@ -14,7 +14,6 @@ export class AuthService {
   }
 
   register(user: User) {
-    console.log(user)
     return this.http
       .post<any>(`${this.baseUrl}/register`, user)
       .subscribe((res) => {
@@ -77,23 +76,7 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    // get the token
     const token = this.getToken();
-    // return a boolean reflecting 
-    // whether or not the token is expired
     return token.length > 1;
   }
-
-  // TODO getuserbyID
-  // getUserById(id: string): Observable<User> {
-  //   this.http
-  //   .post<any>(`${this.baseUrl}/login`, { email: email, password: password })
-  //   .subscribe((res) => {
-  //     if (res.token) {
-  //       this.setSession(res)
-  //       this.router.navigate(['/'])
-  //     } else {
-  //     }
-  //   })
-  // }
 }

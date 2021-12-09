@@ -215,35 +215,24 @@ export class GuideService {
 
 
 
-  postItem(item: any): Observable<Guide> {
-    // this.guides.push(item)
+  postItem(item: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/guide/`, item)
   }
 
-  // postItem(item: KanjiList):Observable<KanjiList> {
-  //   return this.http.post<any>(`${this.baseUrl}/kanjilist/`, item)
-  // }
 
   putItem(item: any, id: any): Observable<Guide> {
-    // const index = this.guides.findIndex((p) => p.id == item.id)
-    // this.guides[index] = item
-    // this.guides.push(item)
     return this.http.put<any>(`${this.baseUrl}/guide/${id}`, item)
   }
 
   getById(id: number): Observable<Guide> {
-    // return this.guides.find((p) => p.id == id)
     return this.http.get<Guide>(`${this.baseUrl}/guide/${id}`)
   }
 
   removebyId(id: any) {
-    // const index = this.guides.findIndex((p) => p.id == id)
-    // this.guides.splice(index, 1)
     return this.http.delete(`${this.baseUrl}/guide/${id}`)
   }
 
   getAll(): Observable<Guide[]> {
-    // return this.guides
     return this.http.get<Guide[]>(`${this.baseUrl}/guide`)
   }
 

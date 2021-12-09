@@ -22,6 +22,7 @@ export class GuideEditComponent implements OnInit {
   creationDate: Date
   kanjiLists: KanjiList[] | undefined
   kanjiList: KanjiList | undefined
+  kanjiListId?: string
 
   private guideService: GuideService
   constructor(route: ActivatedRoute, guideService: GuideService, kanjiListService: KanjiListService) {
@@ -74,7 +75,6 @@ export class GuideEditComponent implements OnInit {
       if (i !== tags.length - 1) {
         returnString += ", "
       }
-      console.log(i + ' ' + returnString)
     }
     return returnString
   }
@@ -91,13 +91,15 @@ export class GuideEditComponent implements OnInit {
 
 
     }
-    if (this.kanjiList !== undefined) {
-      newGuide = {
-        ...newGuide,
-        kanjiListId: this.kanjiList?.id
-      }
+    if (this.kanjiListId !== undefined) {
+        newGuide.kanjilist = this.kanjiListId
     }
     // this.guideService.putItem(newGuide)
-    this.guideService.putItem(newGuide, this.id).subscribe((item) => newGuide = item)
+    this.guideService.putItem(newGuide, this.id).subscribe((item) => {newGuide = item
+      if (this.kanjiListId !== undefined) {
+        newGuide.kanjilist = this.kanjiListId
+      }
+      console.log(newGuide.kanjilist)
+    })
   }
 }
