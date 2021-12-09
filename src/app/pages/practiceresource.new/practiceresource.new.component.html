@@ -53,6 +53,12 @@
 
             </select>
 
+            <label class="header-font float-left mt-4">KanjiList needed for Practice resource:</label>
+
+            <select class="form-control" name="kanjilist" id="kanji_list" [(ngModel)]="kanjiListId" #kanjilist="ngModel">
+                <option *ngFor="let optionKanjiList of kanjiLists" [value]="optionKanjiList.id">{{optionKanjiList.name}}</option>
+            </select>
+
             <hr>
             <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="kanjiListForm.invalid " routerLink="../"
                 (click)="onSubmit()" type="submit">Submit</button>

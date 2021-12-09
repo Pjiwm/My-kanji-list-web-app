@@ -5,4 +5,5 @@ export interface PracticeResource {
     estimatedReadingTime: number
     creationDate: Date
     id?: any
+    kanjilist?: any
 }

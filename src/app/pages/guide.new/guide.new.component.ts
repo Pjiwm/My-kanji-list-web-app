@@ -28,7 +28,6 @@ export class GuideNewComponent implements OnInit {
     this.guideTags = ""
     this.guideId = this.guideService.getNewId()
     this.creationDate = new Date()
-    // this.kanjiLists = kanjiListService.getAll()
     this.kanjiLists = []
   }
 
@@ -40,7 +39,7 @@ export class GuideNewComponent implements OnInit {
 
   onSubmit(): void {
     let tagsArray = this.guideTags?.split(',')
-    let newGuide: any = {
+    let newGuide: Guide = {
       id: this.guideId,
       title: this.guideTitle,
       content: this.guideContent,
@@ -51,14 +50,9 @@ export class GuideNewComponent implements OnInit {
       newGuide.kanjilist = this.kanjiListId
     }
 
-    // this.guideService.postItem(newGuide)
     this.guideService.postItem(newGuide).subscribe((item) => {
       newGuide = item
-      if (this.kanjiListId !== undefined) {
-        newGuide.kanjilist = this.kanjiListId
-      }
-    }
-    )
+    })
   }
 
 }

@@ -92,14 +92,10 @@ export class GuideEditComponent implements OnInit {
 
     }
     if (this.kanjiListId !== undefined) {
-        newGuide.kanjilist = this.kanjiListId
+      newGuide.kanjilist = this.kanjiListId
     }
-    // this.guideService.putItem(newGuide)
-    this.guideService.putItem(newGuide, this.id).subscribe((item) => {newGuide = item
-      if (this.kanjiListId !== undefined) {
-        newGuide.kanjilist = this.kanjiListId
-      }
-      console.log(newGuide.kanjilist)
+    this.guideService.putItem(newGuide, this.id).subscribe((item) => {
+      newGuide = item
     })
   }
 }
