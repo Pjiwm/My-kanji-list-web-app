@@ -28,7 +28,8 @@ import { ProfileComponent } from './pages/profile/profile.component'
 import { TokenInterceptor } from './services/TokenIncreptor';
 import { PracticeresourceComponent } from './pages/practiceresource/practiceresource.component';
 import { PracticeresourceDetailComponent } from './pages/practiceresource.detail/practiceresource.detail.component';
-import { PracticeresourceNewComponent } from './pages/practiceresource.new/practiceresource.new.component'
+import { PracticeresourceNewComponent } from './pages/practiceresource.new/practiceresource.new.component';
+import { PracticeresourceEditComponent } from './pages/practiceresource.edit/practiceresource.edit.component'
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PracticeresourceNewComponent } from './pages/practiceresource.new/pract
     PracticeresourceComponent,
     PracticeresourceDetailComponent,
     PracticeresourceNewComponent,
+    PracticeresourceEditComponent,
   ],
   imports: [
     AppRoutingModule,
