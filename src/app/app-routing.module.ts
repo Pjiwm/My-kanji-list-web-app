@@ -12,6 +12,7 @@ import { KanjilistNewComponent } from './pages/kanjilist.new/kanjilist.new.compo
 import { KanjilistComponent } from './pages/kanjilist/kanjilist.component'
 import { LoginComponent } from './pages/login/login.component'
 import { PracticeresourceDetailComponent } from './pages/practiceresource.detail/practiceresource.detail.component'
+import { PracticeresourceNewComponent } from './pages/practiceresource.new/practiceresource.new.component'
 import { PracticeresourceComponent } from './pages/practiceresource/practiceresource.component'
 import { RegisterComponent } from './pages/register/register.component'
 
@@ -33,8 +34,9 @@ const routes: Routes = [
   { path: 'guide/edit/:id', pathMatch: 'full', component: GuideEditComponent },
   { path: 'guide/:id', pathMatch: 'full', component: GuideDetailComponent },
   // practice resource
-  {path: 'practiceresource', pathMatch: 'full', component: PracticeresourceComponent},
-  {path: 'practiceresource/:id', pathMatch: 'full', component: PracticeresourceDetailComponent},
+  { path: 'practiceresource', pathMatch: 'full', component: PracticeresourceComponent },
+  { path: 'practiceresource/new', pathMatch: 'full', component: PracticeresourceNewComponent },
+  { path: 'practiceresource/:id', pathMatch: 'full', component: PracticeresourceDetailComponent },
   // **
   { path: '**', redirectTo: '/' }
 ]
