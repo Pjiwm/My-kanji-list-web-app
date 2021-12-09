@@ -59,14 +59,17 @@ export class ProfileComponent implements OnInit {
 
   onDeleteKanjiList(id: any): void {
     this.kanjiListService.removebyId(id).subscribe((item) => item = item)
+    this.ngOnInit()
   }
 
   onDeleteGuide(id: any): void {
     this.guideSerivce.removebyId(id).subscribe((item) => item = item)
+    this.ngOnInit()
   }
 
   onDeletePracticeResource(id: any): void {
     this.practiceResourceService.removebyId(id).subscribe((item) => item = item)
+    this.ngOnInit()
   }
 
 }
