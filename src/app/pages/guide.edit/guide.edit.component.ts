@@ -35,7 +35,6 @@ export class GuideEditComponent implements OnInit {
     this.guideTags = ""
     this.kanjiListService = kanjiListService
     this.kanjiLists = []
-    // this.kanjiLists = kanjiListService.getAll()
   }
 
   ngOnInit(): void {
@@ -46,7 +45,7 @@ export class GuideEditComponent implements OnInit {
         this.guideTitle = guide.title
         this.guideContent = guide.content
         this.creationDate = guide.creationDate
-        this.guideTags = this.tagArrayToString(guide.tags)
+        this.guideTags = this.guide.tags.join(',')
         this.kanjiList = guide.kanjilist
       })
       this.kanjiListService.getAll().subscribe((kanjilists) => {
@@ -54,7 +53,7 @@ export class GuideEditComponent implements OnInit {
       })
 
       if (this.guide !== undefined) {
-        this.guideTags = this.tagArrayToString(this.guide.tags)
+        this.guideTags = this.guide.tags.join(',')
         this.guideTitle = this.guide.title
         this.guideContent = this.guide.content
       }
@@ -62,27 +61,10 @@ export class GuideEditComponent implements OnInit {
     })
   }
 
-  /**
- * We want to get the tags array as a string so it can be displayed in a form field.
- * We iterate over it and add comma's after each word just how it was filled in when the user made a new list.
- * @param tags - the tags from a kanji list we want to iterate over
- * @returns - a string of all tags in the array seperated by comma and space
- */
-  private tagArrayToString(tags: string[]): string {
-    let returnString = ""
-    for (let i = 0; i < tags.length; i++) {
-      returnString += tags[i]
-      if (i !== tags.length - 1) {
-        returnString += ", "
-      }
-    }
-    return returnString
-  }
-
   onSubmit(): void {
     let tagsArray = this.guideTags?.split(',')
 
-    let newGuide: any = {
+    let editedGuide: Guide = {
       id: this.id,
       title: this.guideTitle,
       content: this.guideContent,
@@ -92,10 +74,10 @@ export class GuideEditComponent implements OnInit {
 
     }
     if (this.kanjiListId !== undefined) {
-      newGuide.kanjilist = this.kanjiListId
+      editedGuide.kanjilist = this.kanjiListId
     }
-    this.guideService.putItem(newGuide, this.id).subscribe((item) => {
-      newGuide = item
+    this.guideService.putItem(editedGuide, this.id).subscribe((item) => {
+      editedGuide = item
     })
   }
 }
