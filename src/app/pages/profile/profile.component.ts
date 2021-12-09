@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
+import { Guide } from 'src/app/models/guide'
+import { KanjiList } from 'src/app/models/kanji.list'
+import { PracticeResource } from 'src/app/models/practice.resource'
 import { User } from 'src/app/models/user'
 import { AuthService } from 'src/app/services/auth.service'
 import { GuideService } from 'src/app/services/guide.service'
 import { KanjiListService } from 'src/app/services/kanji.list.service'
+import { PracticeresourceService } from 'src/app/services/practiceresource.service'
 
 @Component({
   selector: 'app-profile',
@@ -11,20 +15,59 @@ import { KanjiListService } from 'src/app/services/kanji.list.service'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  kanjiListService: KanjiListService
-  guideService: GuideService
-  authService: AuthService
-  // TODO get user in here
-  // profileUser$: Observable<User>
+  kanjiLists: KanjiList[] | undefined
+  guides: Guide[] | undefined
+  practiceResources: PracticeResource[] | undefined
+  user: User | undefined
+  loggedInUser$: Observable<User>
+  tableState: string
+  userName: string | null = localStorage.getItem("user_name")
 
-  constructor(guideSerivce: GuideService, kanjiListService: KanjiListService, authService: AuthService) {
-    this.guideService = guideSerivce
-    this.kanjiListService = kanjiListService
-    this.authService = authService
-    // this.profileUser$ = authService.get
-   }
+  constructor(private guideSerivce: GuideService,
+    private kanjiListService: KanjiListService,
+    private practiceResourceService: PracticeresourceService,
+    private authService: AuthService) {
+
+    this.loggedInUser$ = this.authService.getUser()
+    this.kanjiLists = []
+    this.guides = []
+    this.practiceResources = []
+    this.tableState = "kanjilists"
+
+  }
 
   ngOnInit(): void {
+    this.kanjiListService.getFromUser(localStorage.getItem('user_id')).subscribe((kanjilists) => {
+      this.kanjiLists = kanjilists
+    })
+    this.guideSerivce.getFromUser(localStorage.getItem('user_id')).subscribe((guides) => {
+      this.guides = guides
+    })
+    this.practiceResourceService.getFromUser(localStorage.getItem('user_id')).subscribe((resources) => {
+      this.practiceResources = resources
+    })
+  }
+
+  isLoggedIn(): Boolean {
+    const isLoggedIn = this.authService.isLoggedIn()
+    if (isLoggedIn) {
+      this.loggedInUser$ = this.authService.getUser()
+      this.loggedInUser$.subscribe(p => this.user = p)
+    }
+    return isLoggedIn
+  }
+
+  onDeleteKanjiList(id: any): void {
+    this.kanjiListService.removebyId(id).subscribe(() => this.ngOnInit())
+  }
+
+  onDeleteGuide(id: any): void {
+    this.guideSerivce.removebyId(id).subscribe(() => this.ngOnInit())
+  }
+
+  onDeletePracticeResource(id: any): void {
+    this.practiceResourceService.removebyId(id).subscribe(() => this.ngOnInit())
+    
   }
 
 }

@@ -32,10 +32,6 @@ export class GuideComponent implements OnInit {
 
   }
 
-  onDelete(id: number): void {
-    this.guideService.removebyId(id).subscribe((item) => item = item)
-  }
-
   isLoggedIn(): Boolean {
     const isLoggedIn = this.authService.isLoggedIn()
     if (isLoggedIn) {

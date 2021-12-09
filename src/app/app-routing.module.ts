@@ -15,6 +15,7 @@ import { PracticeresourceDetailComponent } from './pages/practiceresource.detail
 import { PracticeresourceEditComponent } from './pages/practiceresource.edit/practiceresource.edit.component'
 import { PracticeresourceNewComponent } from './pages/practiceresource.new/practiceresource.new.component'
 import { PracticeresourceComponent } from './pages/practiceresource/practiceresource.component'
+import { ProfileComponent } from './pages/profile/profile.component'
 import { RegisterComponent } from './pages/register/register.component'
 
 
@@ -39,6 +40,9 @@ const routes: Routes = [
   { path: 'practiceresource/new', pathMatch: 'full', component: PracticeresourceNewComponent },
   { path: 'practiceresource/edit/:id', pathMatch: 'full', component: PracticeresourceEditComponent },
   { path: 'practiceresource/:id', pathMatch: 'full', component: PracticeresourceDetailComponent },
+  // profile
+  { path: 'profile', pathMatch: 'full', component: ProfileComponent },
+
   // **
   { path: '**', redirectTo: '/' }
 ]

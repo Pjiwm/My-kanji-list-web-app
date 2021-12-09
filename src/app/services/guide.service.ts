@@ -235,6 +235,10 @@ export class GuideService {
     return this.http.get<Guide[]>(`${this.baseUrl}/guide`)
   }
 
+  getFromUser(id: any): Observable<Guide[]> {
+    return this.http.get<Guide[]>(`${this.baseUrl}/guide/user/${id}`)
+  }
+
   getNewId() {
     return this.guides[this.guides.length - 1].id + 1
   }
