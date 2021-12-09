@@ -24,8 +24,9 @@
                 <p class="validation-error">Incorrect password!</p>
             </div>
             <hr>
-            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="loginForm.invalid" routerLink="../"
-                (click)="onSubmit()" type="submit">Login</button>
+            <p *ngIf="!successfulLogin" class="validation-error">Incorrect email or password</p>
+            <button class="super-button btn mx-3 px-5 shadow-none" [disabled]="loginForm.invalid" (click)="onSubmit()"
+                type="submit">Login</button>
             <hr>
         </form>
     </div>
