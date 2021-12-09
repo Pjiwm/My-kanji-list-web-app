@@ -15,14 +15,11 @@ export class GuideDetailComponent implements OnInit {
   route: ActivatedRoute
   guide: Guide | undefined
   kanjiList?: KanjiList | undefined
-  kanjiListService: KanjiListService
-  private guideService: GuideService
-  constructor(route: ActivatedRoute, guideService: GuideService, kanjiListService: KanjiListService) {
+  guideService: GuideService
+  constructor(route: ActivatedRoute, guideService: GuideService) {
     this.route = route
     this.guideService = guideService
     this.id = 0
-    this.kanjiListService = kanjiListService
-
   }
 
   ngOnInit(): void {

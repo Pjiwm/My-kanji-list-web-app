@@ -12,7 +12,7 @@ import Kanji from 'kanji.js'
   styleUrls: ['./kanjilist.edit.component.css']
 })
 export class KanjilistEditComponent implements OnInit {
-  id: number
+  id: any
   route: ActivatedRoute
   kanjiList: KanjiList | undefined
 
@@ -26,7 +26,6 @@ export class KanjilistEditComponent implements OnInit {
   constructor(route: ActivatedRoute, kanjiListService: KanjiListService) {
     this.route = route
     this.kanjiListService = kanjiListService
-    this.id = 0
     this.listDescription = ""
     this.listName = ""
     this.listTags = ""
@@ -43,7 +42,7 @@ export class KanjilistEditComponent implements OnInit {
     this.kanjiListService.getById(this.id).subscribe((kanjiList) => {
       this.kanjiList = kanjiList
       if (this.kanjiList !== undefined) {
-        this.listTags = this.tagArrayToString(this.kanjiList.tags)
+        this.listTags = this.kanjiList.tags.join(',')
         this.listKanji = this.kanjiArrayToString(this.kanjiList.kanji)
         this.listDate = this.kanjiList.creationDate
         this.listDescription = this.kanjiList.description
@@ -52,23 +51,7 @@ export class KanjilistEditComponent implements OnInit {
     })
 
   }
-  /**
-   * We want to get the tags array as a string so it can be displayed in a form field.
-   * We iterate over it and add comma's after each word just how it was filled in when the user made a new list.
-   * @param tags - the tags from a kanji list we want to iterate over
-   * @returns - a string of all tags in the array seperated by comma and space
-   */
-  private tagArrayToString(tags: string[]): string {
-    let returnString = ""
-    for (let i = 0; i < tags.length; i++) {
-      returnString += tags[i]
-      if (i !== tags.length - 1) {
-        returnString += ", "
-      }
-    }
-    return returnString
-  }
-
+  
   /**
    * We want to get the kanji array as a string so it can be displayed in a form field.
    * By iterating over it we can get a long string of every single kanji character in the array with no spaces or comma's.

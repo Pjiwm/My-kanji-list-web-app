@@ -6,6 +6,5 @@ export interface Guide {
     content: string
     tags: Array<string>
     creationDate: Date
-    // kanjiListId?: number
-    kanjilist?: KanjiList
+    kanjilist?: any
 }

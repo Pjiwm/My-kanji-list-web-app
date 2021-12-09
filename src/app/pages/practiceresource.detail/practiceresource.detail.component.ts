@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
+import { KanjiList } from 'src/app/models/kanji.list'
 import { PracticeResource } from 'src/app/models/practice.resource'
 import { PracticeresourceService } from 'src/app/services/practiceresource.service'
 
@@ -13,6 +14,8 @@ export class PracticeresourceDetailComponent implements OnInit {
   route: ActivatedRoute
   practiceResource: PracticeResource | undefined
   skillsString: String | undefined
+  kanjiList?: KanjiList | undefined
+
   private practiceResourceService: PracticeresourceService
   constructor(route: ActivatedRoute, practiceResourceService: PracticeresourceService) {
     this.route = route
@@ -27,6 +30,7 @@ export class PracticeresourceDetailComponent implements OnInit {
     this.practiceResourceService.getById(this.id).subscribe((resource) => {
       this.practiceResource = resource
       this.skillsString = resource.requiredSkills.join(', ')
+      this.kanjiList = resource.kanjilist
     })
   }
 }
