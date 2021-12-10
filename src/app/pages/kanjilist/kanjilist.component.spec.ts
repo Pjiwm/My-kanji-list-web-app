@@ -1,49 +1,78 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing"
+import { TestBed } from "@angular/core/testing"
 import { KanjilistComponent } from "./kanjilist.component"
 import { KanjiListService } from "src/app/services/kanji.list.service"
 import { KanjiList } from "src/app/models/kanji.list"
-import { ActivatedRoute } from "@angular/router"
-import { RouterTestingModule } from "@angular/router/testing"
+import { AuthService } from "src/app/services/auth.service"
+import { of } from "rxjs"
 
+// mock data
+const daysOfWeek: KanjiList = {
+  id: 0,
+  name: "Days",
+  description: "These are the days from monday til friday",
+  tags: ["days", "friday"],
+  kanji: ["月", "火", "水", "木", "金"],
+  creationDate: new Date()
+}
+const oneToFive: KanjiList = {
+  id: 1,
+  name: "Numbers one to five",
+  description: "We count to five with these numbers!",
+  tags: ["numbers", "5", "1"],
+  kanji: ["一", "二", "三", "四", "五"],
+  creationDate: new Date()
+}
 
-describe('AboutComponent', () => {
+const multipleKanjiLists: KanjiList[] = [daysOfWeek, oneToFive]
+
+describe('KanjiList table', () => {
   let component: KanjilistComponent
-  let fixture: ComponentFixture<KanjilistComponent>
+  let kanjiListService: jasmine.SpyObj<KanjiListService>
+  let authService: jasmine.SpyObj<AuthService>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [KanjilistComponent],
-      imports: [RouterTestingModule]
+  beforeEach(() => {    
+    kanjiListService = jasmine.createSpyObj('KanjiListService', ['getAll', 'removebyId', 'putItem', 'postItem'])
+    authService = jasmine.createSpyObj('AuthService', ['register', 'login', 'logout', 'getUser'])
+
+    TestBed.configureTestingModule({
+      providers: [{ provide: KanjiListService, useValue: kanjiListService }, { provide: AuthService, useValue: authService}]
     })
-      .compileComponents()
+
+    component = TestBed.createComponent(KanjilistComponent).componentInstance
+
+    kanjiListService = TestBed.inject(KanjiListService) as jasmine.SpyObj<KanjiListService>
+    authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>
+
   })
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(KanjilistComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
-
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should contain values from a kanji list', async () => {
+  // READ
+  it('should contain multiple kanji lists', (done: DoneFn) => {
+    kanjiListService.getAll.and.returnValue(of(multipleKanjiLists))
     component.ngOnInit()
-    component.kanjiLists = []
-    expect(component.kanjiLists.length).toBe(0)
-    const listName = 'new'
-    component.kanjiLists.push({
-      name: listName,
-      description: 'new test component',
-      kanji: ['所', '画', '描', '付', '会', '試', '健'],
-      tags: ['interesting', 'new'],
-      creationDate: new Date(),
-      id: 1
-    })
-    expect(component.kanjiLists.length).toBe(1)
-    expect(component.kanjiLists[0].name).toBe(listName)
 
+    expect(component.kanjiLists?.length).toBe(2)
+    done()
   })
-})
 
+  
+  // UPDATE
+  it('should have different data in a kanji list', (done: DoneFn) => {
+    const editedKanjiList: KanjiList = {
+      id: daysOfWeek.id,
+      name: "months of the year",
+      kanji: daysOfWeek.kanji,
+      creationDate: daysOfWeek.creationDate,
+      description: daysOfWeek.description,
+      tags: daysOfWeek.tags
+    }
+    kanjiListService.getAll.and.returnValue(of([editedKanjiList]))
+    component.ngOnInit()
+    expect(component.kanjiLists[0].name).toBe("months of the year")
+    done()
+  })
+
+})
