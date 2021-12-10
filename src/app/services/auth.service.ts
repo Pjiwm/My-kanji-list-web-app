@@ -14,9 +14,9 @@ export class AuthService {
 
   }
 
-  register(user: User) {
+  register(email: string, password: string, userName: string) {
     return this.http
-      .post<any>(`${this.baseUrl}/register`, user)
+      .post<any>(`${this.baseUrl}/register`, { email: email, password: password, userName: userName })
       .subscribe((res) => {
         if (res.token) {
           this.setSession(res)

@@ -69,7 +69,6 @@ export class PracticeresourceEditComponent implements OnInit {
       editedResource.kanjilist = this.kanjiListId
     }
 
-    console.log(this.resourceEstimatedReadingTime)
     this.practiceResourceService.putItem(editedResource, this.id).subscribe((item) => {
       editedResource = item
 

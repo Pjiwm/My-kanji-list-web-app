@@ -92,6 +92,23 @@ input[type="text"], input[type="password"]{
   color: white !important;
   }
 
+  input[type="text"]:-webkit-any(), input[type="password"]:-webkit-any(){
+    background-color:#353a40 !important;
+    color: white !important;
+    
+    }
+  
+    input:-webkit-autofill { 
+      -webkit-box-shadow: 0 0 0 1000px #353a40 inset !important; 
+      -webkit-text-fill-color: white !important
+    
+    } 
+    input:-webkit-autofill:focus { 
+      -webkit-box-shadow: 0 0 0 1000px #353a40 inset !important; 
+      -webkit-text-fill-color: white !important
+
+    }
+
 
   select {
     background-color:#353a40 !important;
