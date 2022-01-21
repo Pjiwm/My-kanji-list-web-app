@@ -29,7 +29,9 @@ import { TokenInterceptor } from './services/TokenIncreptor';
 import { PracticeresourceComponent } from './pages/practiceresource/practiceresource.component';
 import { PracticeresourceDetailComponent } from './pages/practiceresource.detail/practiceresource.detail.component';
 import { PracticeresourceNewComponent } from './pages/practiceresource.new/practiceresource.new.component';
-import { PracticeresourceEditComponent } from './pages/practiceresource.edit/practiceresource.edit.component'
+import { PracticeresourceEditComponent } from './pages/practiceresource.edit/practiceresource.edit.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [
@@ -62,6 +64,12 @@ import { PracticeresourceEditComponent } from './pages/practiceresource.edit/pra
     FormsModule,
     NgbModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     {
