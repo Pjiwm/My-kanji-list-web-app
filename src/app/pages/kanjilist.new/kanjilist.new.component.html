@@ -37,7 +37,7 @@
                 <p class="validation-error">Tags are a required field. Add 1 tag of at least 1 character long!</p>
             </div>
 
-            <label class="header-font float-left mt-3">Kanji characters:</label>
+            <label class="header-font float-left mt-3">Characters:</label>
             <hr>
             <label class="text-left">You can just paste characters in here, no need to seperate each character with
                 spaces or comma's.
@@ -52,7 +52,7 @@
                     placeholder="(e.g) This list contains the 500 most common characters that appear in a newspaper."></textarea>
             </div>
             <div *ngIf="kanji.invalid && kanji.touched" class="text-left mx-1 mt-1">
-                <p class="validation-error">Kanji characters are a required field. Add atleast 3 different characters!
+                <p class="validation-error">Characters are a required field. Add atleast 3 different characters!
                 </p>
             </div>
             <div *ngIf="incorrectKanjiValidator(kanji)">

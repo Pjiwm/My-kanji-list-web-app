@@ -1,7 +1,7 @@
 <div class="container transparent-field text-center">
     <h1 class="header-font pt-3">{{practiceResource?.title | uppercase}}</h1>
     <div *ngIf="kanjiList !== undefined && kanjiList !== null">
-        <h3>This Guide requires the kanji list:</h3>
+        <h3>This Guide requires the Character List:</h3>
         <a class="super-button no-shadow" [routerLink]="['../../kanjilist/', kanjiList.id]">{{kanjiList?.name}}</a>
     </div>
     <h4 class="header-font pb-1">Estimated reading time: {{practiceResource?.estimatedReadingTime}} minutes</h4>
