@@ -3,18 +3,18 @@
     <div *ngIf="isLoggedIn()">
         <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" (click)="tableState='practiceresources'">Practice resources</a>
         <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" (click)="tableState='guides'">Guides</a>
-        <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" (click)="tableState='kanjilists'">Kanji lists</a>
+        <a class="btn btn-primary shadow-none mt-5 mb-2 float-right mx-3 px-5" (click)="tableState='kanjilists'">Character lists</a>
     </div>
     <hr>
     <div *ngIf="tableState == 'kanjilists'">
-        <h1 class="header-font pt-3">Kanji Lists</h1>
+        <h1 class="header-font pt-3">Character Lists</h1>
         <div class="container-fluid table-responsive">
             <table class="table table-dark mb-5">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Kanji</th>
+                        <th scope="col">Characters</th>
                         <th scope="col">Tags</th>
                         <th scope="col">Date</th>
                         <th scope="col"></th>
