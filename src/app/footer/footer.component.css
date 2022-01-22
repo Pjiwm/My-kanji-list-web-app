@@ -8,10 +8,10 @@
 }
 
 .twitter:hover {
-    transition: background-color 0.28s ease-in;
+    /* transition: background-color 0.28s ease-in; */
     cursor:pointer;
     background-color: #8a0000;
-    -webkit-mask-image: url(twitter.svg);
+    /* -webkit-mask-image: url(twitter.svg); */
     mask-image: url(twitter.svg);
 }
 
@@ -24,10 +24,10 @@
 }
 
 .youtube:hover {
-    transition: background-color 0.28s ease-in;
+    /* transition: background-color 0.28s ease-in; */
     cursor:pointer;
     background-color: #8a0000;
-    -webkit-mask-image: url(youtube.svg);
+    /* -webkit-mask-image: url(youtube.svg); */
     mask-image: url(youtube.svg);
 }
 
@@ -40,9 +40,10 @@
 }
 
 .github:hover {
-    transition: background-color 0.28s ease-in;
+    /* transition: 0.28s ease-in; */
     cursor:pointer;
     background-color: #8a0000;
+    color:#8a0000;
     -webkit-mask-image: url(github.svg);
     mask-image: url(github.svg);
 }
